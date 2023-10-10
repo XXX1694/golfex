@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:goflex/features/new_order/presentation/pages/contact_info_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CreateOrderButton extends StatelessWidget {
@@ -9,7 +10,13 @@ class CreateOrderButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ContactInfoPage(),
+            ));
+      },
       padding: const EdgeInsets.all(0),
       child: Container(
         height: double.infinity,
