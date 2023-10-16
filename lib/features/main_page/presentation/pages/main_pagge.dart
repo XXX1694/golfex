@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:goflex/features/common/colors.dart';
 import 'package:goflex/features/home_page/presentation/pages/home_page.dart';
+import 'package:goflex/features/orders/presentation/pages/orders_page.dart';
 import 'package:goflex/features/profile/presentation/pages/profile_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -46,7 +47,7 @@ class _MainPageState extends State<MainPage> {
           case 0:
             return const HomePage();
           case 1:
-            return const Scaffold();
+            return const OrdersPage();
           case 2:
             return const ProfilePage();
           default:
