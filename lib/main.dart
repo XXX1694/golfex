@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:goflex/features/about/presentation/pages/about_page.dart';
 import 'package:goflex/features/cart/data/repositories/cart_repository.dart';
 import 'package:goflex/features/cart/presentation/bloc/cart_bloc.dart';
@@ -33,7 +34,8 @@ import 'package:goflex/features/registration/presentation/pages/organization_reg
 import 'package:goflex/features/registration/presentation/pages/person_registration_page.dart';
 import 'package:goflex/features/settings/presentation/pages/settings_page.dart';
 import 'package:goflex/features/welcome_page/presentation/pages/welcome_page.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:goflex/utils/analytics/app_analytics.dart';
+import 'package:goflex/utils/permission_utils.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -57,6 +59,8 @@ class _MainAppState extends State<MainApp> {
 
   void initialization() async {
     await Future.delayed(const Duration(seconds: 1));
+    await AppAnalytics.requestTrackingAuthorization();
+    await PermissionUtils.checkLocationPermission();
     FlutterNativeSplash.remove();
   }
 
