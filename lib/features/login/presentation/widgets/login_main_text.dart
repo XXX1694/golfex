@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:goflex/common/colors.dart';
 
 class LoginMainText extends StatelessWidget {
   const LoginMainText({super.key});
@@ -10,9 +9,9 @@ class LoginMainText extends StatelessWidget {
     return RichText(
       text: TextSpan(
         children: [
-          TextSpan(
-            text: 'Welcome to gofl',
-            style: GoogleFonts.montserrat(
+          const TextSpan(
+            text: 'Добро пожаловать в gofl',
+            style: TextStyle(
               color: Colors.black,
               fontSize: 28,
               fontWeight: FontWeight.w700,
@@ -20,7 +19,7 @@ class LoginMainText extends StatelessWidget {
           ),
           TextSpan(
             text: 'ex',
-            style: GoogleFonts.montserrat(
+            style: TextStyle(
               color: mainColor,
               fontSize: 28,
               fontWeight: FontWeight.w700,

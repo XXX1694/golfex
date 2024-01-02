@@ -6,3 +6,8 @@ abstract class NewOrderEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class AddOrder extends NewOrderEvent {
+  final OrderModel order;
+  const AddOrder({required this.order});
+}

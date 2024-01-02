@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LocationBlock extends StatelessWidget {
   const LocationBlock({super.key});
@@ -11,9 +10,9 @@ class LocationBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          'Current location',
-          style: GoogleFonts.montserrat(
+        const Text(
+          'Текущее местоположение',
+          style: TextStyle(
             color: Colors.white54,
             fontSize: 12,
             fontWeight: FontWeight.w400,
@@ -32,9 +31,9 @@ class LocationBlock extends StatelessWidget {
                 width: 24,
               ),
               const SizedBox(width: 4),
-              Text(
-                'Almaty, Kazakhstan',
-                style: GoogleFonts.montserrat(
+              const Text(
+                'Алматы, Казахстан',
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                   fontWeight: FontWeight.w400,

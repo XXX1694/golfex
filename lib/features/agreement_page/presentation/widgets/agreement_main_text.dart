@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:goflex/common/colors.dart';
 
 class AgreementMainText extends StatelessWidget {
   const AgreementMainText({super.key});
@@ -10,9 +9,9 @@ class AgreementMainText extends StatelessWidget {
     return RichText(
       text: TextSpan(
         children: [
-          TextSpan(
-            text: 'Welcome to go',
-            style: GoogleFonts.montserrat(
+          const TextSpan(
+            text: 'Добро пожаловать в go',
+            style: TextStyle(
               color: Colors.black,
               fontSize: 28,
               fontWeight: FontWeight.w700,
@@ -20,7 +19,7 @@ class AgreementMainText extends StatelessWidget {
           ),
           TextSpan(
             text: 'flex.',
-            style: GoogleFonts.montserrat(
+            style: TextStyle(
               color: mainColor,
               fontSize: 28,
               fontWeight: FontWeight.w700,

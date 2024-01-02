@@ -1,0 +1,109 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:goflex/features/cart/data/models/order_model.dart';
+import 'package:goflex/common/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+final _storage = SharedPreferences.getInstance();
+
+class AddToCartRepository {
+  addToCart({
+    required OrderModel order,
+  }) async {
+    final storage = await _storage;
+    final dio = Dio();
+    final url = mainUrl;
+    String finalUrl = '${url}order/create/';
+    String? token = storage.getString('auth_token');
+    if (token == null) return null;
+    dio.options.headers["authorization"] = "Token $token";
+    Uri? uri = Uri.tryParse(finalUrl);
+    if (uri != null) {
+      try {
+        if (kDebugMode) {
+          print(
+            jsonEncode(
+              {
+                "from_where": {
+                  "address": order.from_where?['address'] ?? '',
+                  "latitude": order.from_where?['latitude'] ?? '',
+                  "longitude": order.from_where?['longitude'] ?? '',
+                },
+                "to_where": {
+                  "address": order.to_where?['address'] ?? '',
+                  "latitude": order.to_where?['latitude'] ?? '',
+                  "longitude": order.to_where?['longitude'] ?? '',
+                },
+                "product": {
+                  "description": order.description ?? '',
+                  "amount": order.product?['amount'] ?? 1,
+                  "total_weight_kg":
+                      int.parse(order.product?['total_weight_kg'] ?? '0'),
+                  "width_cm": int.parse(order.product?['width_cm'] ?? '0'),
+                  "height_cm": int.parse(order.product?['height_cm'] ?? 0),
+                  "length_cm": int.parse(order.product?['length_cm'] ?? 0),
+                  // "images": order.products?['images'] ?? []
+                },
+                "consumer": order.consumer,
+                "delivery_date": order.delivery_date,
+                "delivery_time": order.delivery_time,
+                "pickup_date": order.pickup_date,
+                "pickup_time": order.pickup_time,
+                "distance": order.distance,
+              },
+            ),
+          );
+        }
+        final response = await dio.post(
+          finalUrl,
+          data: jsonEncode(
+            {
+              "from_where": {
+                "address": order.from_where?['address'] ?? '',
+                "latitude": order.from_where?['latitude'] ?? '',
+                "longitude": order.from_where?['longitude'] ?? '',
+              },
+              "to_where": {
+                "address": order.to_where?['address'] ?? '',
+                "latitude": order.to_where?['latitude'] ?? '',
+                "longitude": order.to_where?['longitude'] ?? '',
+              },
+              "product": {
+                "description": order.description ?? '',
+                "amount": order.product?['amount'] ?? 1,
+                "total_weight_kg":
+                    int.parse(order.product?['total_weight_kg'] ?? '0'),
+                "width_cm": int.parse(order.product?['width_cm'] ?? '0'),
+                "height_cm": int.parse(order.product?['height_cm'] ?? 0),
+                "length_cm": int.parse(order.product?['length_cm'] ?? 0),
+                // "images": order.products?['images'] ?? []
+              },
+              "price": order.price,
+              "consumer": order.consumer,
+              "delivery_date": order.delivery_date,
+              "delivery_time": order.delivery_time,
+              "pickup_date": order.pickup_date,
+              "pickup_time": order.pickup_time,
+              "distance": order.distance,
+            },
+          ),
+        );
+        // if (kDebugMode) {
+        //   print(response.data);
+        // }
+
+        if (response.statusCode == 201) {
+          return 201;
+        } else {
+          return 400;
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+    }
+  }
+}

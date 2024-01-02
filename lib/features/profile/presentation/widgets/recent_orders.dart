@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RecentOrders extends StatelessWidget {
   const RecentOrders({super.key});
@@ -19,7 +17,7 @@ class RecentOrders extends StatelessWidget {
             height: 60,
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: accentColor,
+              color: const Color(0xff333333),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -33,33 +31,37 @@ class RecentOrders extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'In progress',
-                      style: GoogleFonts.montserrat(
+                      'В процессе',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
                         color: Colors.yellow,
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     Text(
-                      'In delivery guy',
-                      style: GoogleFonts.montserrat(
+                      'У курьера',
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Waiting in 20.11',
-                      style: GoogleFonts.montserrat(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
+                    SizedBox(height: 4),
+                    Flexible(
+                      child: Text(
+                        'Ожидается в ...',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ],

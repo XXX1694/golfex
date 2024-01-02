@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/widgets/main_button.dart';
+import 'package:goflex/common/widgets/main_button.dart';
+import 'package:goflex/features/new_order/presentation/pages/select_source_page.dart';
 import 'package:goflex/features/new_order/presentation/widgets/contact_info_page/recipient_number_field.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ContactInfoPage extends StatefulWidget {
   const ContactInfoPage({super.key});
@@ -23,11 +23,12 @@ class _ContactInfoPageState extends State<ContactInfoPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: const Color(0xFF222222),
         elevation: 0,
-        title: Text(
-          'New order',
-          style: GoogleFonts.montserrat(
+        title: const Text(
+          'Новый заказ',
+          style: TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -51,9 +52,9 @@ class _ContactInfoPageState extends State<ContactInfoPage> {
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
-                      Text(
-                        'Contact info',
-                        style: GoogleFonts.montserrat(
+                      const Text(
+                        'Контактная информация',
+                        style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
                           fontSize: 18,
@@ -61,10 +62,43 @@ class _ContactInfoPageState extends State<ContactInfoPage> {
                       ),
                       const SizedBox(height: 30),
                       RecipientNumberField(controller: _phoneController),
+                      const SizedBox(height: 8),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            ' Введите номер получателя',
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ],
+                      ),
                       const Spacer(),
                       MainButton(
-                        text: 'Continue',
-                        onPressed: () {},
+                        text: 'Далее',
+                        onPressed: () {
+                          if (_phoneController.text.length == 18) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SelectSourcePage(
+                                  phoneNumber: _phoneController.text,
+                                ),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content:
+                                    Text('Заполните контактную информацию'),
+                              ),
+                            );
+                          }
+                        },
                       ),
                       const SizedBox(height: 32),
                     ],

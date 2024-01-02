@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:goflex/common/colors.dart';
 
 class LoginBottomText extends StatelessWidget {
   const LoginBottomText({super.key});
@@ -10,9 +9,9 @@ class LoginBottomText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Not a member? ',
-          style: GoogleFonts.montserrat(
+        const Text(
+          'Не зарегистрирован? ',
+          style: TextStyle(
             color: Colors.black54,
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -23,8 +22,8 @@ class LoginBottomText extends StatelessWidget {
             Navigator.pushNamed(context, '/choose_role');
           },
           child: Text(
-            'Join now',
-            style: GoogleFonts.montserrat(
+            'Регистрация',
+            style: TextStyle(
               color: mainColor,
               fontSize: 14,
               fontWeight: FontWeight.w600,

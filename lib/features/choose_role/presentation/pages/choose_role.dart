@@ -6,9 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:goflex/features/choose_role/presentation/widgets/choose_role_bottom_text.dart';
 import 'package:goflex/features/choose_role/presentation/widgets/choose_role_main_text.dart';
 import 'package:goflex/features/choose_role/presentation/widgets/choose_role_second_text.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:goflex/features/common/widgets/main_button.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:goflex/common/colors.dart';
+import 'package:goflex/common/widgets/main_button.dart';
 
 class ChooseRole extends StatefulWidget {
   const ChooseRole({super.key});
@@ -23,6 +22,11 @@ class _ChooseRoleState extends State<ChooseRole> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -71,8 +75,8 @@ class _ChooseRoleState extends State<ChooseRole> {
                                 ),
                                 const SizedBox(height: 20),
                                 Text(
-                                  'Person',
-                                  style: GoogleFonts.montserrat(
+                                  'Физ лицо',
+                                  style: TextStyle(
                                     color: i == 1 ? Colors.white : Colors.black,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w700,
@@ -117,8 +121,8 @@ class _ChooseRoleState extends State<ChooseRole> {
                                 ),
                                 const SizedBox(height: 20),
                                 Text(
-                                  'Organization',
-                                  style: GoogleFonts.montserrat(
+                                  'Юр лицо',
+                                  style: TextStyle(
                                     color: i == 2 ? Colors.white : Colors.black,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w700,
@@ -135,7 +139,7 @@ class _ChooseRoleState extends State<ChooseRole> {
               ),
               const Spacer(),
               MainButton(
-                text: 'Choose',
+                text: 'Выбрать',
                 onPressed: () {
                   i == 1
                       ? Navigator.pushNamed(context, '/registration/person')

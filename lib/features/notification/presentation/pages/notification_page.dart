@@ -1,8 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'dart:io';
 
-class NotificationPage extends StatelessWidget {
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:goflex/common/colors.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
+
+  @override
+  State<NotificationPage> createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
+  final RefreshController refreshController =
+      RefreshController(initialRefresh: false);
+
+  void _onRefresh() async {
+    await Future.delayed(const Duration(milliseconds: 1000));
+    refreshController.refreshCompleted();
+  }
+
+  void _onLoading() async {
+    await Future.delayed(const Duration(milliseconds: 1000));
+    if (mounted) setState(() {});
+    refreshController.loadComplete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,20 +35,45 @@ class NotificationPage extends StatelessWidget {
         foregroundColor: Colors.black,
         surfaceTintColor: Colors.black,
         backgroundColor: Colors.white,
-        title: Text(
-          'Notification',
-          style: GoogleFonts.montserrat(
+        title: const Text(
+          'Уведомление',
+          style: TextStyle(
             color: Colors.black,
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
         ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            height: 1,
+            width: double.infinity,
+            color: Colors.black12,
+          ),
+        ),
       ),
-      body: const SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [],
+      body: SmartRefresher(
+        header: CustomHeader(
+          builder: (context, mode) => Platform.isAndroid
+              ? CircularProgressIndicator(
+                  color: mainColor,
+                  strokeWidth: 3,
+                )
+              : CupertinoActivityIndicator(
+                  color: mainColor,
+                ),
+        ),
+        enablePullDown: true,
+        enablePullUp: false,
+        controller: refreshController,
+        onRefresh: _onRefresh,
+        onLoading: _onLoading,
+        child: const SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Center(
+              child: Text('Нет уведомлений'),
+            ),
           ),
         ),
       ),

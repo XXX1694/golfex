@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:goflex/features/common/widgets/main_button.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:goflex/common/colors.dart';
+import 'package:goflex/common/widgets/main_button.dart';
+import 'package:goflex/features/login/presentation/pages/login_page.dart';
 
 import 'package:goflex/features/welcome_page/presentation/widgets/main_text_first.dart';
 import 'package:goflex/features/welcome_page/presentation/widgets/main_text_second.dart';
@@ -9,7 +11,7 @@ import 'package:goflex/features/welcome_page/presentation/widgets/main_text_thir
 import 'package:goflex/features/welcome_page/presentation/widgets/second_text_first.dart';
 import 'package:goflex/features/welcome_page/presentation/widgets/second_text_second.dart';
 import 'package:goflex/features/welcome_page/presentation/widgets/second_text_third.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -18,14 +20,42 @@ class WelcomePage extends StatefulWidget {
   State<WelcomePage> createState() => _WelcomePageState();
 }
 
+final _storage = SharedPreferences.getInstance();
 int index = 0;
+List<String> images = [
+  'assets/images/1.svg',
+  'assets/images/2.svg',
+  'assets/images/3.svg',
+];
 
 class _WelcomePageState extends State<WelcomePage> {
   late PageController _controller;
   @override
   void initState() {
     _controller = PageController(initialPage: 0);
+    check();
     super.initState();
+  }
+
+  void check() async {
+    final storage = await _storage;
+    bool? isFirst = storage.getBool('is_first');
+    if (isFirst == true) {
+      // ignore: use_build_context_synchronously
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginPage(),
+        ),
+      );
+    }
+  }
+
+  void setFirst() async {
+    final storage = await _storage;
+    storage.setBool('is_first', true);
+    // ignore: use_build_context_synchronously
+    await Navigator.pushNamed(context, '/login');
   }
 
   @override
@@ -54,8 +84,8 @@ class _WelcomePageState extends State<WelcomePage> {
         actions: [
           CupertinoButton(
             child: Text(
-              'Skip',
-              style: GoogleFonts.montserrat(
+              'Пропустить',
+              style: TextStyle(
                 color: mainColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
@@ -80,11 +110,9 @@ class _WelcomePageState extends State<WelcomePage> {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    color: mainColor20,
-                  ),
+                SizedBox(
                   height: height * 0.45,
+                  child: SvgPicture.asset(images[index]),
                 ),
                 const SizedBox(height: 20),
                 Row(
@@ -123,7 +151,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             duration: const Duration(microseconds: 100),
                             curve: Curves.bounceIn,
                           )
-                        : Navigator.pushNamed(context, '/login');
+                        : setFirst();
                   },
                 ),
                 const SizedBox(height: 40),

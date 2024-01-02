@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:goflex/features/new_order/presentation/pages/contact_info_page.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CreateOrderButton extends StatelessWidget {
   const CreateOrderButton({super.key});
@@ -42,9 +41,9 @@ class CreateOrderButton extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Spacer(),
-                  Text(
-                    'Create order',
-                    style: GoogleFonts.montserrat(
+                  const Text(
+                    'Новый заказ',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -53,9 +52,9 @@ class CreateOrderButton extends StatelessWidget {
                   const SizedBox(height: 32),
                   Row(
                     children: [
-                      Text(
-                        'Create new',
-                        style: GoogleFonts.montserrat(
+                      const Text(
+                        'Создать новую',
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 12,
                           fontWeight: FontWeight.w600,

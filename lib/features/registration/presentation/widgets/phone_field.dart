@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
+import 'package:goflex/common/colors.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class PhoneField extends StatelessWidget {
@@ -10,7 +10,12 @@ class PhoneField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        labelText: 'Phone number',
+        labelStyle: const TextStyle(
+          color: Colors.black54,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
+        labelText: 'Номер телефона',
         floatingLabelStyle: TextStyle(color: mainColor),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

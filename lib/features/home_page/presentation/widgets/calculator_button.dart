@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:goflex/common/colors.dart';
+
+import '../../../calculate_price/presentation/pages/select_source_page.dart';
 
 class CalculatorButton extends StatelessWidget {
   const CalculatorButton({super.key});
@@ -23,9 +24,9 @@ class CalculatorButton extends StatelessWidget {
           child: Column(
             children: [
               const Spacer(),
-              Text(
-                'Calculate shipment amount',
-                style: GoogleFonts.montserrat(
+              const Text(
+                'Рассчитать цену доставки',
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -35,9 +36,9 @@ class CalculatorButton extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Calculator',
-                    style: GoogleFonts.montserrat(
+                  const Text(
+                    'Калькулятор',
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -66,7 +67,14 @@ class CalculatorButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SelectSourcePage(),
+          ),
+        );
+      },
     );
   }
 }

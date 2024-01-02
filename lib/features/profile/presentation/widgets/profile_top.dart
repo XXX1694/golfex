@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:goflex/common/colors.dart';
 
 class ProfileTop extends StatelessWidget {
-  const ProfileTop({super.key});
-
+  const ProfileTop({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,7 +18,7 @@ class ProfileTop extends StatelessWidget {
           child: Center(
             child: Text(
               'AS',
-              style: GoogleFonts.montserrat(
+              style: TextStyle(
                 color: accentColor,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -33,8 +32,8 @@ class ProfileTop extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Abzal',
-              style: GoogleFonts.montserrat(
+              name,
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -43,9 +42,9 @@ class ProfileTop extends StatelessWidget {
             const SizedBox(height: 4),
             GestureDetector(
               onTap: () {},
-              child: Text(
+              child: const Text(
                 'Управление аккаунтом',
-                style: GoogleFonts.montserrat(
+                style: TextStyle(
                   color: Colors.black,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,

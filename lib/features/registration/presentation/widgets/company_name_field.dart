@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
+import 'package:goflex/common/colors.dart';
 
 class CompanyNameField extends StatelessWidget {
   const CompanyNameField({super.key, required this.controller});
@@ -9,8 +9,13 @@ class CompanyNameField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
+        labelStyle: const TextStyle(
+          color: Colors.black54,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
         floatingLabelStyle: TextStyle(color: mainColor),
-        labelText: 'Company name',
+        labelText: 'Имя компании',
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: mainColor),

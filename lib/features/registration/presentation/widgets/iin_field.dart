@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
+import 'package:goflex/common/colors.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class IINField extends StatelessWidget {
@@ -10,8 +10,13 @@ class IINField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
+        labelStyle: const TextStyle(
+          color: Colors.black54,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
         floatingLabelStyle: TextStyle(color: mainColor),
-        labelText: 'IIN',
+        labelText: 'ИИН',
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: mainColor),

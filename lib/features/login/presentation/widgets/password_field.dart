@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/common/colors.dart';
+import 'package:goflex/common/colors.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({super.key, required this.controller});
@@ -18,6 +18,11 @@ class _PasswordFieldState extends State<PasswordField> {
       obscureText: _obscureText,
       // obscuringCharacter: '*',
       decoration: InputDecoration(
+        labelStyle: const TextStyle(
+          color: Colors.black54,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
         floatingLabelStyle: TextStyle(color: mainColor),
         suffixIcon: GestureDetector(
           onTap: () => setState(() {
@@ -28,7 +33,7 @@ class _PasswordFieldState extends State<PasswordField> {
             color: Colors.black54,
           ),
         ),
-        labelText: 'Password',
+        labelText: 'Пароль',
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: mainColor),

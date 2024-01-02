@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WorkWithMarketplaceButton extends StatelessWidget {
   const WorkWithMarketplaceButton({super.key});
@@ -31,11 +30,12 @@ class WorkWithMarketplaceButton extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Spacer(),
-                  Text(
-                    'Working with Marketplace',
-                    style: GoogleFonts.montserrat(
+                  const Text(
+                    'Для онлайн-продавцов',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -44,9 +44,9 @@ class WorkWithMarketplaceButton extends StatelessWidget {
                   const SizedBox(height: 32),
                   Row(
                     children: [
-                      Text(
-                        'Read more',
-                        style: GoogleFonts.montserrat(
+                      const Text(
+                        'Унать больше',
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -79,7 +79,9 @@ class WorkWithMarketplaceButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, '/article');
+      },
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:goflex/features/change_name/presentation/pages/change_name.dart';
+import 'package:goflex/features/change_number/presentation/pages/change_number_page.dart';
+import 'package:goflex/features/change_password/presentation/pages/change_password_page.dart';
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({super.key});
@@ -26,52 +28,76 @@ class ProfileMenu extends StatelessWidget {
           children: [
             const SizedBox(height: 8),
             GestureDetector(
-              child: Column(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChangeNumberPage(),
+                  ),
+                );
+              },
+              child: const Column(
                 children: [
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Text(
-                    'Orders',
-                    style: GoogleFonts.montserrat(
+                    'Сменить номер',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                 ],
               ),
             ),
             const Divider(color: Colors.black26),
             GestureDetector(
-              child: Column(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChangeNamePage(),
+                  ),
+                );
+              },
+              child: const Column(
                 children: [
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Text(
-                    'Refund',
-                    style: GoogleFonts.montserrat(
+                    'Поменять имя',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                 ],
               ),
             ),
             const Divider(color: Colors.black26),
             GestureDetector(
-              child: Column(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChangePasswordPage(),
+                  ),
+                );
+              },
+              child: const Column(
                 children: [
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Text(
-                    'Reviews',
-                    style: GoogleFonts.montserrat(
+                    'Сменить пароль',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                 ],
               ),
             ),

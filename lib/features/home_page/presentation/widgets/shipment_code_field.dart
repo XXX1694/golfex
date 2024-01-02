@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:goflex/features/order_info/presentation/pages/order_info_page.dart';
 
 class ShipmentCodeField extends StatefulWidget {
   const ShipmentCodeField({super.key});
@@ -23,7 +22,7 @@ class _ShipmentCodeFieldState extends State<ShipmentCodeField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
-        style: GoogleFonts.montserrat(
+        style: const TextStyle(
           color: Colors.black,
           fontSize: 15,
         ),
@@ -39,8 +38,8 @@ class _ShipmentCodeFieldState extends State<ShipmentCodeField> {
               width: 20,
             ),
           ),
-          hintText: 'Enter Your Shipment Number',
-          hintStyle: GoogleFonts.montserrat(
+          hintText: 'Введите номер отслежнования',
+          hintStyle: const TextStyle(
             color: Colors.black54,
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -54,8 +53,17 @@ class _ShipmentCodeFieldState extends State<ShipmentCodeField> {
             borderSide: const BorderSide(color: Colors.white),
           ),
         ),
-        keyboardType: TextInputType.number,
-        inputFormatters: [maskFormatter],
+        onSubmitted: (value) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => OrderInfoPage(
+                tracking_number: controller.text,
+                delete: false,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -66,10 +74,3 @@ class _ShipmentCodeFieldState extends State<ShipmentCodeField> {
     super.dispose();
   }
 }
-
-var maskFormatter = MaskTextInputFormatter(
-  mask: '### ### ### ### ###',
-  filter: {
-    "#": RegExp(r'[0-9]'),
-  },
-);

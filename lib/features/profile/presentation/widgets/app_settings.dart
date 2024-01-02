@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppSettings extends StatelessWidget {
   const AppSettings({super.key});
@@ -13,8 +12,8 @@ class AppSettings extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
-            offset: Offset(5, 5),
-            blurRadius: 15,
+            offset: Offset(2, 2),
+            blurRadius: 10,
             color: Colors.black12,
           ),
         ],
@@ -29,18 +28,18 @@ class AppSettings extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/settings');
               },
-              child: Column(
+              child: const Column(
                 children: [
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Text(
-                    'Settings',
-                    style: GoogleFonts.montserrat(
+                    'Параметры',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                 ],
               ),
             ),
@@ -49,18 +48,18 @@ class AppSettings extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/about');
               },
-              child: Column(
+              child: const Column(
                 children: [
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Text(
-                    'About app',
-                    style: GoogleFonts.montserrat(
+                    'О приложении',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                 ],
               ),
             ),
@@ -69,18 +68,18 @@ class AppSettings extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/help');
               },
-              child: Column(
+              child: const Column(
                 children: [
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Text(
-                    'Help',
-                    style: GoogleFonts.montserrat(
+                    'Помощь',
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                 ],
               ),
             ),
