@@ -32,6 +32,7 @@ dependencies:
   flutter_polyline_points: ^1.0.0
   flutter_datetime_picker_plus: ^2.1.0
   intl: ^0.18.0
+  app_tracking_transparency: ^2.0.4
 
 flutter_native_splash:
   android: true
@@ -55,4 +56,3 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-    
