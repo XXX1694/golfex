@@ -59,8 +59,8 @@ class _MainAppState extends State<MainApp> {
 
   void initialization() async {
     await Future.delayed(const Duration(seconds: 1));
-    await AppAnalytics.requestTrackingAuthorization();
     await PermissionUtils.checkLocationPermission();
+    await AppAnalytics.requestTrackingAuthorization();
     FlutterNativeSplash.remove();
   }
 
