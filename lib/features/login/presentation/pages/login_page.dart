@@ -8,6 +8,8 @@ import 'package:goflex/features/login/presentation/widgets/login_second_text.dar
 import 'package:goflex/features/login/presentation/widgets/password_field.dart';
 import 'package:goflex/features/login/presentation/widgets/phone_field.dart';
 
+import '../../../../utils/analytics/app_analytics.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -87,7 +89,8 @@ class _LoginPageState extends State<LoginPage> {
                     ? const MainButtonLoading()
                     : MainButton(
                         text: 'Войти',
-                        onPressed: () {
+                        onPressed: () async {
+                          await AppAnalytics.requestTrackingAuthorization();
                           bloc.add(
                             LogIn(
                               phoneNumber: _phoneController.text,

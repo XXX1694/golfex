@@ -34,7 +34,6 @@ import 'package:goflex/features/registration/presentation/pages/organization_reg
 import 'package:goflex/features/registration/presentation/pages/person_registration_page.dart';
 import 'package:goflex/features/settings/presentation/pages/settings_page.dart';
 import 'package:goflex/features/welcome_page/presentation/pages/welcome_page.dart';
-import 'package:goflex/utils/analytics/app_analytics.dart';
 import 'package:goflex/utils/permission_utils.dart';
 
 void main() {
@@ -60,7 +59,6 @@ class _MainAppState extends State<MainApp> {
   void initialization() async {
     await Future.delayed(const Duration(seconds: 1));
     await PermissionUtils.checkLocationPermission();
-    await AppAnalytics.requestTrackingAuthorization();
     FlutterNativeSplash.remove();
   }
 
