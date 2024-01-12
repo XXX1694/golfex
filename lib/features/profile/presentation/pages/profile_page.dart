@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:goflex/common/colors.dart';
 import 'package:goflex/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:goflex/features/profile/presentation/widgets/app_settings.dart';
+import 'package:goflex/features/profile/presentation/widgets/delete_button.dart';
 import 'package:goflex/features/profile/presentation/widgets/exit_button.dart';
 import 'package:goflex/features/profile/presentation/widgets/profile_menu.dart';
 import 'package:goflex/features/profile/presentation/widgets/profile_top.dart';
@@ -133,14 +134,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             const SizedBox(height: 24),
                             const AppSettings(),
                             const SizedBox(height: 24),
+                            const DeleteButton(),
+                            const SizedBox(height: 24),
                             const ExitButton(),
                             const Spacer(),
-                            const Text(
-                              'goflex 1.0.0',
-                              style: TextStyle(
-                                color: Colors.black54,
-                              ),
-                            ),
+
                             const SizedBox(height: 16),
                           ],
                         ),

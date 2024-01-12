@@ -19,3 +19,5 @@ class LogIn extends LoginEvent {
 class UserStatus extends LoginEvent {}
 
 class UserLogOut extends LoginEvent {}
+
+class UserDelete extends LoginEvent {}

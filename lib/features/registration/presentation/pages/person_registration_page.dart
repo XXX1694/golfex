@@ -21,6 +21,7 @@ class _PersonrRegistrationPageState extends State<PersonrRegistrationPage> {
   late TextEditingController _fullNameController;
   late TextEditingController _phoneNumberController;
   late TextEditingController _passwordController;
+  late TextEditingController _emailController;
   late RegistrationBloc bloc;
   @override
   void initState() {
@@ -28,6 +29,7 @@ class _PersonrRegistrationPageState extends State<PersonrRegistrationPage> {
     _iinController = TextEditingController();
     _phoneNumberController = TextEditingController();
     _passwordController = TextEditingController();
+    _emailController = TextEditingController();
     bloc = BlocProvider.of<RegistrationBloc>(context);
     super.initState();
   }
@@ -67,16 +69,16 @@ class _PersonrRegistrationPageState extends State<PersonrRegistrationPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: size.height * 0.04),
+                        SizedBox(height: size.height * 0.03),
                         const RegistrationMainText(),
                         const SizedBox(height: 16),
                         const RegistrationSecondText(),
                         const SizedBox(height: 40),
                         PersonRegistrationFields(
                           fullNameController: _fullNameController,
-                          iinController: _iinController,
                           passwordController: _passwordController,
                           phoneNumberController: _phoneNumberController,
+                          emailController: _emailController,
                         ),
                         SizedBox(height: size.height * 0.04),
                         state is UserRegistering
@@ -90,6 +92,7 @@ class _PersonrRegistrationPageState extends State<PersonrRegistrationPage> {
                                       iin: _iinController.text,
                                       password: _passwordController.text,
                                       phone: _phoneNumberController.text,
+                                      email: _emailController.text,
                                     ),
                                   );
                                 },

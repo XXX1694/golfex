@@ -8,7 +8,7 @@ class RegistrationRepository {
   registerPerson({
     required String phone,
     required String fullName,
-    required String iin,
+    required String email,
     required String password,
   }) async {
     final dio = Dio();
@@ -24,7 +24,7 @@ class RegistrationRepository {
               {
                 'phone': phone,
                 'full_name': fullName,
-                'iin': iin,
+                'email': email,
                 'password': password,
               },
             ),
@@ -36,8 +36,8 @@ class RegistrationRepository {
             {
               'phone': phone,
               'full_name': fullName,
-              'iin': iin,
               'password': password,
+              'email': email,
             },
           ),
         );

@@ -14,3 +14,5 @@ class LogingIn extends LoginState {}
 class LogedIn extends LoginState {}
 
 class LogInError extends LoginState {}
+
+class LoginDeleted extends LoginState {}

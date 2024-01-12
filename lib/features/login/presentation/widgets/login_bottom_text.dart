@@ -19,7 +19,7 @@ class LoginBottomText extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '/choose_role');
+            Navigator.pushNamed(context, '/registration/person');
           },
           child: Text(
             'Регистрация',

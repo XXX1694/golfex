@@ -10,7 +10,11 @@ import 'package:goflex/features/change_number/data/repositories/number_repositor
 import 'package:goflex/features/change_number/presentation/bloc/change_number_bloc.dart';
 import 'package:goflex/features/change_password/data/repositories/chnage_password_reository.dart';
 import 'package:goflex/features/change_password/presentation/bloc/change_password_bloc.dart';
+import 'package:goflex/features/chat_page/data/repositories/chat_repository.dart';
+import 'package:goflex/features/chat_page/presentation/bloc/chat_page_bloc.dart';
 import 'package:goflex/features/choose_role/presentation/pages/choose_role.dart';
+import 'package:goflex/features/get_user_id/data/repositories/get_user_id_repo.dart';
+import 'package:goflex/features/get_user_id/presentation/bloc/get_user_id_bloc.dart';
 import 'package:goflex/features/help/presentation/pages/help_page.dart';
 import 'package:goflex/features/left_application/data/repositories/left_application_repository.dart';
 import 'package:goflex/features/left_application/presentation/bloc/left_application_bloc.dart';
@@ -35,6 +39,10 @@ import 'package:goflex/features/registration/presentation/pages/person_registrat
 import 'package:goflex/features/settings/presentation/pages/settings_page.dart';
 import 'package:goflex/features/welcome_page/presentation/pages/welcome_page.dart';
 import 'package:goflex/utils/permission_utils.dart';
+
+// For building models: flutter pub run build_runner build --delete-conflicting-outputs
+// For changing app icon: flutter pub run flutter_launcher_icons:main
+// For apk: flutter build apk --split-per-abi
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -140,6 +148,18 @@ class _MainAppState extends State<MainApp> {
             create: (context) => OrderInfoBloc(
               repo: OrderInfoRepository(),
               orderInfoState: const OrderInfoState(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => ChatPageBloc(
+              chatPageState: const ChatPageState(),
+              repo: ChatRepository(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => GetUserIdBloc(
+              getUserIdState: const GetUserIdState(),
+              repo: GetUserIdRepo(),
             ),
           ),
         ],

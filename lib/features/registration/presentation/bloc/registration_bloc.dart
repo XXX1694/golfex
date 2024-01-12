@@ -19,7 +19,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
           final res = await repo.registerPerson(
             phone: formatPhoneNumber(event.phone),
             fullName: event.fullName,
-            iin: formatBinNumber(event.iin),
+            email: event.email,
             password: event.password,
           );
           if (res == 201) {

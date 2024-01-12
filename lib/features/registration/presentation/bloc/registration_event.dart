@@ -12,11 +12,13 @@ class RegisterUser extends RegistrationEvent {
   final String fullName;
   final String iin;
   final String password;
+  final String email;
   const RegisterUser({
     required this.fullName,
     required this.iin,
     required this.password,
     required this.phone,
+    required this.email,
   });
 }
 

@@ -52,5 +52,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(LoginInitial());
       },
     );
+    on<UserDelete>(
+      (event, emit) async {
+        int res = await repo.deleteAcc();
+        if (res == 200) {
+          final storage = await _storage;
+          storage.remove('auth_token');
+          emit(LoginDeleted());
+        }
+      },
+    );
   }
 }

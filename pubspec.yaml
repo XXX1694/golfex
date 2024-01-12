@@ -1,7 +1,7 @@
 name: goflex
 description: A new Flutter project.
 publish_to: 'none'
-version: 1.0.0+12
+version: 1.0.1+20
 
 environment:
   sdk: '>=3.1.1 <4.0.0'
@@ -33,6 +33,9 @@ dependencies:
   flutter_datetime_picker_plus: ^2.1.0
   intl: ^0.18.0
   app_tracking_transparency: ^2.0.4
+  grouped_list: ^5.1.2
+  provider: ^6.0.5
+  get: ^4.6.6
 
 flutter_native_splash:
   android: true

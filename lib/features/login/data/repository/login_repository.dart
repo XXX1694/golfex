@@ -62,6 +62,35 @@ class LoginRepository {
       }
     }
   }
+
+  deleteAcc() async {
+    final storage = await _storage;
+    final dio = Dio();
+    final url = mainUrl;
+    String finalUrl = '${url}users/delete/';
+    String? token = storage.getString('auth_token');
+    if (token == null) return null;
+    dio.options.headers["authorization"] = "Token $token";
+    Uri? uri = Uri.tryParse(finalUrl);
+    if (uri != null) {
+      try {
+        final response = await dio.post(finalUrl);
+        if (kDebugMode) {
+          print(response.data);
+        }
+        if (response.statusCode == 200) {
+          return 200;
+        } else {
+          return 400;
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+        return 400;
+      }
+    }
+  }
 }
 
 String formatPhoneNumber(String input) {
