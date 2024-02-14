@@ -32,7 +32,7 @@ class MainMessageBlock extends StatelessWidget {
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: secondColor70,
+              color: mainColor70,
               borderRadius: BorderRadius.circular(100),
             ),
             child: Padding(

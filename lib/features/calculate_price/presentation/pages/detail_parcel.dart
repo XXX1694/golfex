@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/calculate_price/presentation/pages/parcel_info.dart';
 import 'package:goflex/common/widgets/main_button.dart';
 
 import 'package:goflex/features/new_order/presentation/widgets/parcel_detail_page/common_sizes.dart';
@@ -200,23 +199,23 @@ class _ParcelDetailPageState extends State<ParcelDetailPage> {
                       MainButton(
                         text: 'Далее',
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ParcelInfoPage(
-                                parcelAbout: widget.parcelAbout,
-                                parcelHeight: _parcelHeight.text,
-                                parcelLength: _parcelLength.text,
-                                parcelNumber: widget.parcelNumber,
-                                parcelType: '',
-                                parcelWeight: _parcelWeight.text,
-                                parcelWidth: _parcelWidth.text,
-                                source: widget.source,
-                                destination: widget.destination,
-                                distance: widget.distance,
-                              ),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => ParcelInfoPage(
+                          //       parcelAbout: widget.parcelAbout,
+                          //       parcelHeight: _parcelHeight.text,
+                          //       parcelLength: _parcelLength.text,
+                          //       parcelNumber: widget.parcelNumber,
+                          //       parcelType: '',
+                          //       parcelWeight: _parcelWeight.text,
+                          //       parcelWidth: _parcelWidth.text,
+                          //       source: widget.source,
+                          //       destination: widget.destination,
+                          //       distance: widget.distance,
+                          //     ),
+                          //   ),
+                          // );
                         },
                       ),
                       const SizedBox(height: 32),

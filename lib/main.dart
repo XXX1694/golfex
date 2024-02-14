@@ -13,6 +13,8 @@ import 'package:goflex/features/change_password/presentation/bloc/change_passwor
 import 'package:goflex/features/chat_page/data/repositories/chat_repository.dart';
 import 'package:goflex/features/chat_page/presentation/bloc/chat_page_bloc.dart';
 import 'package:goflex/features/choose_role/presentation/pages/choose_role.dart';
+import 'package:goflex/features/forgot_password/data/repositories/forgot_password_repo.dart';
+import 'package:goflex/features/forgot_password/presentation/bloc/forgot_password_bloc.dart';
 import 'package:goflex/features/get_user_id/data/repositories/get_user_id_repo.dart';
 import 'package:goflex/features/get_user_id/presentation/bloc/get_user_id_bloc.dart';
 import 'package:goflex/features/help/presentation/pages/help_page.dart';
@@ -23,6 +25,8 @@ import 'package:goflex/features/login/presentation/bloc/login_bloc.dart';
 import 'package:goflex/features/login/presentation/pages/login_page.dart';
 import 'package:goflex/features/main_article/presentation/pages/main_article_page.dart';
 import 'package:goflex/features/main_page/presentation/pages/main_pagge.dart';
+import 'package:goflex/features/message/data/repositories/message_repository.dart';
+import 'package:goflex/features/message/presentation/bloc/message_bloc.dart';
 import 'package:goflex/features/new_order/data/repository/add_repository.dart';
 import 'package:goflex/features/new_order/presentation/bloc/new_order_bloc.dart';
 import 'package:goflex/features/notification/presentation/pages/notification_page.dart';
@@ -157,9 +161,21 @@ class _MainAppState extends State<MainApp> {
             ),
           ),
           BlocProvider(
+            create: (context) => MessageBloc(
+              messageState: const MessageState(),
+              repo: MessageRepository(),
+            ),
+          ),
+          BlocProvider(
             create: (context) => GetUserIdBloc(
               getUserIdState: const GetUserIdState(),
               repo: GetUserIdRepo(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => ForgotPasswordBloc(
+              forgotPasswordState: const ForgotPasswordState(),
+              repo: ForgotPasswordRepository(),
             ),
           ),
         ],
@@ -173,9 +189,7 @@ class _MainAppState extends State<MainApp> {
                 const PersonrRegistrationPage(),
             '/registration/organization': (context) =>
                 const OrganizationRegistrationPage(),
-            '/main': (context) => const MainPage(
-                  page: 0,
-                ),
+            '/main': (context) => const MainPage(page: 0),
             '/settings': (context) => const SettingsPage(),
             '/about': (context) => const AboutPage(),
             '/help': (context) => const HelpPage(),

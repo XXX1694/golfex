@@ -41,14 +41,30 @@ class RegistrationRepository {
             },
           ),
         );
+        if (kDebugMode) {
+          print('Response status: ${response.statusCode}');
+          print('Response data: ${response.data}');
+        }
+
         if (response.statusCode == 201) {
           return 201;
         } else {
           return 400;
         }
       } catch (e) {
-        if (kDebugMode) {
-          print(e);
+        if (e is DioException) {
+          if (e.response != null) {
+            if (kDebugMode) {
+              print('Error response status: ${e.response!.statusCode}');
+              print('Error response data: ${e.response!.data}');
+            }
+            Map<String, dynamic> data = e.response!.data!;
+            if (data.containsKey('phone')) return 401;
+          } else {
+            if (kDebugMode) {
+              print('Error without response');
+            }
+          }
         }
       }
     }

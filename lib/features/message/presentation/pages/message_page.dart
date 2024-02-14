@@ -6,7 +6,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:goflex/common/colors.dart';
 import 'package:goflex/features/chat_page/presentation/bloc/chat_page_bloc.dart';
 import 'package:goflex/features/message/data/models/message_model.dart';
@@ -19,10 +18,12 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 class MessagePage extends StatefulWidget {
   final int chatId;
   final int userId;
+  final String name;
   const MessagePage({
     super.key,
     required this.chatId,
     required this.userId,
+    required this.name,
   });
 
   @override
@@ -41,7 +42,7 @@ class _MessagePageState extends State<MessagePage> {
         jsonEncode(
           {
             "message": textController.text,
-            "user_id": widget.userId,
+            // "user_id": widget.userId,
           },
         ),
       );
@@ -72,7 +73,8 @@ class _MessagePageState extends State<MessagePage> {
     bloc1 = BlocProvider.of<ChatPageBloc>(context);
     bloc.add(GetAllMessages(chatId: widget.chatId));
     channel = WebSocketChannel.connect(
-      Uri.parse('ws/chat/${widget.chatId}/${widget.userId}/'),
+      Uri.parse(
+          'wss://back.goflex.kz/ws/chat/${widget.chatId}/${widget.userId}/'),
     );
     textController = TextEditingController();
     super.initState();
@@ -100,6 +102,13 @@ class _MessagePageState extends State<MessagePage> {
               },
             ),
             const SizedBox(width: 8),
+            Text(
+              widget.name,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
         bottom: PreferredSize(
@@ -115,10 +124,10 @@ class _MessagePageState extends State<MessagePage> {
         body: SafeArea(
           child: Stack(
             children: [
-              SvgPicture.asset(
-                'assets/images/message_back.svg',
-                fit: BoxFit.cover,
-              ),
+              // SvgPicture.asset(
+              //   'assets/images/message_back.svg',
+              //   fit: BoxFit.cover,
+              // ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -153,8 +162,12 @@ class _MessagePageState extends State<MessagePage> {
                                         profile: null,
                                       ),
                                     );
+                                  } else {
+                                    messages = [];
                                   }
                                 }
+                                //   messages = [];
+                                // }
                                 return MainMessageBlock(
                                   userId: widget.userId,
                                   messages: messages,
@@ -165,11 +178,11 @@ class _MessagePageState extends State<MessagePage> {
                             return Center(
                               child: Platform.isAndroid
                                   ? CircularProgressIndicator(
-                                      color: secondColor,
+                                      color: mainColor,
                                       strokeWidth: 3,
                                     )
                                   : CupertinoActivityIndicator(
-                                      color: secondColor,
+                                      color: mainColor,
                                     ),
                             );
                           } else {
@@ -190,6 +203,7 @@ class _MessagePageState extends State<MessagePage> {
                       ),
                       child: Row(
                         children: [
+                          const SizedBox(width: 8),
                           Expanded(
                             child: Center(
                               child: TextField(
@@ -222,7 +236,7 @@ class _MessagePageState extends State<MessagePage> {
                               height: 36,
                               width: 36,
                               decoration: BoxDecoration(
-                                color: secondColor,
+                                color: mainColor,
                                 borderRadius: BorderRadius.circular(100),
                               ),
                               child: const Center(

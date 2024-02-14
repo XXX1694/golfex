@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -104,6 +106,52 @@ class AddToCartRepository {
           print(e);
         }
       }
+    }
+  }
+
+  calculateDistance({
+    required String s_lat,
+    required String s_long,
+    required String d_lat,
+    required String d_long,
+  }) async {
+    try {
+      final dio = Dio();
+      final String finalUrl =
+          'https://routing.api.2gis.com/get_dist_matrix?key=$dgisApi&version=2.0';
+
+      final response = await dio.post(
+        finalUrl,
+        data: jsonEncode(
+          {
+            "points": [
+              {
+                "lat": double.parse(s_lat),
+                "lon": double.parse(s_long),
+              },
+              {
+                "lat": double.parse(d_lat),
+                "lon": double.parse(d_long),
+              }
+            ],
+            "sources": [0],
+            "targets": [1]
+          },
+        ),
+      );
+      if (kDebugMode) {
+        print(response.data);
+      }
+      if (response.statusCode == 200) {
+        return response.data['routes'][0]['distance'];
+      } else {
+        return 0;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      return 0;
     }
   }
 }

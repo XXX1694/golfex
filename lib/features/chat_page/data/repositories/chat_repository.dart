@@ -12,7 +12,7 @@ class ChatRepository {
     final url = mainUrl;
     var storage = await _storage;
     String? token = storage.getString('auth_token');
-    if (token == null) return null;
+    if (token == null) return [];
     dio.options.headers["authorization"] = "Token $token";
     String finalUrl = '${url}chat/list/';
 
@@ -20,10 +20,14 @@ class ChatRepository {
     if (uri != null) {
       try {
         final response = await dio.get(finalUrl);
-        if (kDebugMode) {
-          print(response.data);
-        }
+        // if (kDebugMode) {
+        //   print(response.data);
+        //   print(response.statusCode);
+        // }
         List data = response.data;
+        if (kDebugMode) {
+          print(data);
+        }
         List<ChatModel> chats = [];
         for (int i = 0; i < data.length; i++) {
           chats.add(ChatModel.fromJson(data[i]));

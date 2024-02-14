@@ -19,6 +19,7 @@ class ParcelInfoPage extends StatefulWidget {
     required this.source,
     required this.destination,
     required this.distance,
+    required this.price,
   });
   final String parcelType;
   final String parcelNumber;
@@ -30,6 +31,7 @@ class ParcelInfoPage extends StatefulWidget {
   final String source;
   final String destination;
   final double distance;
+  final double price;
   @override
   State<ParcelInfoPage> createState() => _ParcelInfoPageState();
 }
@@ -107,9 +109,7 @@ class _ParcelInfoPageState extends State<ParcelInfoPage> {
                               ),
                               const SizedBox(height: 16),
                               CourierInfo(
-                                price: widget.distance >= 3.0
-                                    ? (widget.distance - 3.0) * 80 + 690
-                                    : 690,
+                                price: widget.price,
                               )
                             ],
                           ),

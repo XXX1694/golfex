@@ -71,7 +71,9 @@
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>This enables real-time order tracking and personalized promotions. Your data is handled with care. Allow tracking for an enhanced delivery experience.</string>
+	<string>We use your location for providing personalized maps and location-based services. This helps us enhance your experience by showing relevant information based on your current location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Want to display location, on map and track it, to be give user function to select location of distribution and pick up location for delivery</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Want to display location, on map and track it, to be give user function to select location of distribution and pick up location for delivery</string>
 </dict>

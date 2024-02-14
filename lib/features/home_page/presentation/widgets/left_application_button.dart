@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:goflex/features/left_application/presentation/pages/left_application_page.dart';
 
 class LeftApplicationButton extends StatelessWidget {
   const LeftApplicationButton({super.key});
@@ -81,12 +80,12 @@ class LeftApplicationButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LeftApplicationPage(),
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => const LeftApplicationPage(),
+        //   ),
+        // );
       },
     );
   }

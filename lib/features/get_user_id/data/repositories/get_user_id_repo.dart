@@ -20,9 +20,9 @@ class GetUserIdRepo {
         final response = await dio.get(finalUrl);
 
         if (response.statusCode == 200) {
-          int data = response.data['user_id'];
+          int data = response.data['id'];
           storage.setInt('user_id', data);
-          return response.data['user_id'];
+          return response.data['id'];
         } else {
           return null;
         }

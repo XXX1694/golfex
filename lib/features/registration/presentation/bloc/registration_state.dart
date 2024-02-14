@@ -13,4 +13,7 @@ class UserRegistering extends RegistrationState {}
 
 class UserRegistered extends RegistrationState {}
 
-class UserRegisterError extends RegistrationState {}
+class UserRegisterError extends RegistrationState {
+  final String error;
+  const UserRegisterError({required this.error});
+}

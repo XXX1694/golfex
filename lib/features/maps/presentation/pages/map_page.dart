@@ -28,12 +28,6 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  // final Completer<GoogleMapController> _mapController =
-  //     Completer<GoogleMapController>();
-  // final Location _locationController = Location();
-  // final LatLng _pGooglePlex = const LatLng(37.4223, -122.0848);
-  // LatLng? _currentP;
-
   LatLng? destLocation = const LatLng(43.238949, 76.889709);
   List<AutocompletePrediction> placesPredictions = [];
   Location location = Location();
@@ -50,22 +44,6 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   child: const Icon(Icons.navigate_next),
-      //   onPressed: () {
-      //     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: builder), (route) => false);
-      //   },
-      // ),
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.white,
-      //   foregroundColor: Colors.black,
-      //   title: Text(
-      //     address ?? 'Выберите место на карте',
-      //     overflow: TextOverflow.visible,
-      //     softWrap: true,
-      //   ),
-      // ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -96,8 +74,6 @@ class _MapPageState extends State<MapPage> {
                 setState(() {
                   placesPredictions.clear();
                 });
-
-                // Navigator.pop(context);
               },
               onMapCreated: (GoogleMapController controller) {
                 _mapController.complete(controller);

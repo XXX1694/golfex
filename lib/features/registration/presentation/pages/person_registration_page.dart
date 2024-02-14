@@ -49,6 +49,10 @@ class _PersonrRegistrationPageState extends State<PersonrRegistrationPage> {
               ),
             ),
           );
+        } else if (state is UserRegisterError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.error)),
+          );
         }
       },
       builder: (context, state) => Scaffold(

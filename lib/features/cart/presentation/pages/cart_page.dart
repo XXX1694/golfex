@@ -57,17 +57,10 @@ class _CartPageState extends State<CartPage> {
           for (int i = 0; i < state.orders.length; i++) {
             all += state.orders[i].price ?? 0;
           }
-          res = (state.orders.length - 1) * 450;
-        }
-
-        // if (state is CartGetError) {
-        //   ScaffoldMessenger.of(context).showSnackBar(
-        //     const SnackBar(
-        //       content: Text('Пустая корзина'),
-        //     ),
-        //   );
-        // }
-        if (state is OrderSended) {
+          if (state.orders.length <= 2) {
+            all == 500;
+          }
+        } else if (state is OrderSended) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Отправлено на обработку'),
@@ -255,7 +248,7 @@ class _CartPageState extends State<CartPage> {
                                                 ),
                                                 TextSpan(
                                                   text:
-                                                      '${index != 0 ? state.orders[index].price! : ''}',
+                                                      '${state.orders.length <= 2 ? 1000 : ''}',
                                                   style: TextStyle(
                                                     decoration: TextDecoration
                                                         .lineThrough,
@@ -266,7 +259,7 @@ class _CartPageState extends State<CartPage> {
                                                 ),
                                                 TextSpan(
                                                   text:
-                                                      ' ${index == 0 ? state.orders[index].price! : state.orders[index].price! - 450}',
+                                                      ' ${state.orders.length <= 2 ? (state.orders.length == 1 ? 1500 : 1250) : '1000'}',
                                                   style: const TextStyle(
                                                     color: Colors.black54,
                                                     fontSize: 16,
@@ -324,7 +317,7 @@ class _CartPageState extends State<CartPage> {
                               ),
                             ),
                             Text(
-                              '${all - res}',
+                              '$all',
                               style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -333,7 +326,7 @@ class _CartPageState extends State<CartPage> {
                             ),
                             const Spacer(),
                             Text(
-                              'Сэкономлено: ',
+                              state is CartGot ? 'Забор: ' : '',
                               style: TextStyle(
                                 color: mainColor,
                                 fontSize: 16,
@@ -341,7 +334,7 @@ class _CartPageState extends State<CartPage> {
                               ),
                             ),
                             Text(
-                              '$res',
+                              '${state is CartGot ? state.orders.length <= 2 ? 500 : 'Бесплатно' : ''}',
                               style: TextStyle(
                                 color: mainColor,
                                 fontSize: 16,

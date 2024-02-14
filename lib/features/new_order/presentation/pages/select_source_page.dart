@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:goflex/common/widgets/main_button.dart';
-import 'package:goflex/features/new_order/presentation/pages/choose_parcel.dart';
+import 'package:goflex/features/new_order/presentation/pages/parcel_info.dart';
 import 'package:goflex/features/new_order/presentation/widgets/select_source_page/address_choose_part.dart';
 import 'package:goflex/features/new_order/presentation/widgets/select_source_page/mock_image.dart';
 
@@ -109,17 +109,45 @@ class _SelectSourcePageState extends State<SelectSourcePage> {
                               ),
                             );
                           } else {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => ChooseParcelPage(
+                            //       source: source.text,
+                            //       destination: destinaton.text,
+                            //       phoneNumber: widget.phoneNumber,
+                            //       d_lat: d_lat.text,
+                            //       d_lng: d_lng.text,
+                            //       s_lat: s_lat.text,
+                            //       s_lng: s_lng.text,
+                            //     ),
+                            //   ),
+                            // );
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ChooseParcelPage(
+                                builder: (context) => ParcelInfoPage(
                                   source: source.text,
                                   destination: destinaton.text,
                                   phoneNumber: widget.phoneNumber,
+                                  parcelAbout: '',
+                                  parcelNumber: '1',
+                                  parcelType: '',
                                   d_lat: d_lat.text,
                                   d_lng: d_lng.text,
                                   s_lat: s_lat.text,
                                   s_lng: s_lng.text,
+                                  parcelHeight: '0',
+                                  parcelLength: '0',
+                                  parcelWeight: '0',
+                                  parcelWidth: '0',
+                                  images: const [],
+                                  distance: 0.0,
+                                  delivery_date: null,
+                                  delivery_time: null,
+                                  pickup_date: null,
+                                  pickup_time: null,
                                 ),
                               ),
                             );

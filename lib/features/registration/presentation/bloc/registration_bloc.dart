@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goflex/features/registration/data/repository/registration_repository.dart';
 
@@ -15,46 +14,19 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     on<RegisterUser>(
       (event, emit) async {
         emit(UserRegistering());
-        try {
-          final res = await repo.registerPerson(
-            phone: formatPhoneNumber(event.phone),
-            fullName: event.fullName,
-            email: event.email,
-            password: event.password,
-          );
-          if (res == 201) {
-            emit(UserRegistered());
-          } else {
-            emit(UserRegisterError());
-          }
-        } catch (e) {
-          if (kDebugMode) {
-            print(e);
-          }
-          emit(UserRegisterError());
-        }
-      },
-    );
-    on<RegisterOrganization>(
-      (event, emit) async {
-        emit(UserRegistering());
-        try {
-          final res = await repo.registerOrganization(
-            phone: formatPhoneNumber(event.phone),
-            organizationName: event.organizationName,
-            bin: formatBinNumber(event.bin),
-            password: event.password,
-          );
-          if (res == 201) {
-            emit(UserRegistered());
-          } else {
-            emit(UserRegisterError());
-          }
-        } catch (e) {
-          if (kDebugMode) {
-            print(e);
-          }
-          emit(UserRegisterError());
+        final res = await repo.registerPerson(
+          phone: formatPhoneNumber(event.phone),
+          fullName: event.fullName,
+          email: event.email,
+          password: event.password,
+        );
+        if (res == 201) {
+          emit(UserRegistered());
+        } else if (res == 401) {
+          emit(const UserRegisterError(
+              error: 'Пользователь с таким телефоном существует'));
+        } else {
+          emit(const UserRegisterError(error: 'Ошибка авторизации'));
         }
       },
     );

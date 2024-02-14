@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:goflex/common/colors.dart';
 
-import '../../../calculate_price/presentation/pages/select_source_page.dart';
-
 class CalculatorButton extends StatelessWidget {
   const CalculatorButton({super.key});
 
@@ -68,12 +66,12 @@ class CalculatorButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const SelectSourcePage(),
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => const SelectSourcePage(),
+        //   ),
+        // );
       },
     );
   }

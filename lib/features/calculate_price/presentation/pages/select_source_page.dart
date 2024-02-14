@@ -5,7 +5,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:goflex/common/widgets/main_button.dart';
-import 'package:goflex/features/calculate_price/presentation/pages/parcel_info.dart';
 import 'package:goflex/features/new_order/presentation/widgets/select_source_page/address_choose_part.dart';
 import 'package:goflex/features/new_order/presentation/widgets/select_source_page/mock_image.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -136,26 +135,26 @@ class _SelectSourcePageState extends State<SelectSourcePage> {
                               ),
                             );
                           } else {
-                            await getPolyinePoints();
-                            // print(totalDistance);
-                            // ignore: use_build_context_synchronously
-                            await Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ParcelInfoPage(
-                                    source: source.text,
-                                    destination: destinaton.text,
-                                    distance: totalDistance,
-                                    parcelAbout: '',
-                                    parcelHeight: '',
-                                    parcelLength: '',
-                                    parcelNumber: '',
-                                    parcelType: '',
-                                    parcelWeight: '',
-                                    parcelWidth: '',
-                                  ),
-                                ),
-                                (route) => false);
+                            // await getPolyinePoints();
+                            // // print(totalDistance);
+                            // // ignore: use_build_context_synchronously
+                            // await Navigator.pushAndRemoveUntil(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => ParcelInfoPage(
+                            //         source: source.text,
+                            //         destination: destinaton.text,
+                            //         distance: totalDistance,
+                            //         parcelAbout: '',
+                            //         parcelHeight: '',
+                            //         parcelLength: '',
+                            //         parcelNumber: '',
+                            //         parcelType: '',
+                            //         parcelWeight: '',
+                            //         parcelWidth: '',
+                            //       ),
+                            //     ),
+                            //     (route) => false);
                           }
                         },
                       ),

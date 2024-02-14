@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goflex/features/cart/data/models/order_model.dart';
 import 'package:goflex/common/widgets/main_button.dart';
 import 'package:goflex/features/main_page/presentation/pages/main_pagge.dart';
+import 'package:goflex/features/new_order/data/repository/add_repository.dart';
 import 'package:goflex/features/new_order/presentation/bloc/new_order_bloc.dart';
 import 'package:goflex/features/new_order/presentation/widgets/parcel_info/courier_info.dart';
 import 'package:goflex/features/new_order/presentation/widgets/parcel_info/destination_info.dart';
@@ -155,18 +156,21 @@ class _ParcelInfoPageState extends State<ParcelInfoPage> {
                                   width: widget.parcelWidth,
                                 ),
                                 const SizedBox(height: 16),
-                                CourierInfo(
-                                  price: widget.distance >= 3.0
-                                      ? (widget.distance - 3.0) * 80 + 690
-                                      : 690,
-                                ),
+                                const CourierInfo(price: 1000),
                               ],
                             ),
                           ),
                         ),
                         MainButton(
                           text: 'Отправить в корзину',
-                          onPressed: () {
+                          onPressed: () async {
+                            AddToCartRepository repo = AddToCartRepository();
+                            final int dist = await repo.calculateDistance(
+                              s_lat: widget.s_lat,
+                              s_long: widget.s_lng,
+                              d_lat: widget.d_lat,
+                              d_long: widget.d_lng,
+                            );
                             bloc.add(
                               AddOrder(
                                 order: OrderModel(
@@ -195,15 +199,12 @@ class _ParcelInfoPageState extends State<ParcelInfoPage> {
                                   },
                                   tracking_number: '',
                                   consumer: widget.phoneNumber,
-                                  price: (widget.distance >= 3.0
-                                          ? (widget.distance - 3.0) * 80 + 690
-                                          : 690)
-                                      .round(),
+                                  price: 1000,
                                   delivery_date: widget.delivery_date,
                                   delivery_time: widget.delivery_time,
                                   pickup_date: widget.pickup_date,
                                   pickup_time: widget.pickup_time,
-                                  distance: widget.distance,
+                                  distance: dist / 1000,
                                 ),
                               ),
                             );

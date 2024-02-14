@@ -80,7 +80,7 @@ class WorkWithMarketplaceButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.pushNamed(context, '/article');
+        // Navigator.pushNamed(context, '/article');
       },
     );
   }

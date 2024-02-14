@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:goflex/common/colors.dart';
-import 'package:goflex/features/maps/presentation/pages/map_page.dart';
+import 'package:goflex/features/maps/presentation/pages/map_page_2gis.dart';
 
 class AddressChoosePart extends StatefulWidget {
   const AddressChoosePart({
@@ -126,7 +126,7 @@ class _AddressChoosePartState extends State<AddressChoosePart> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MapPage(
+                        builder: (context) => MapPageDGis(
                           controller: fromController,
                           callback: changeFrom,
                           lat: widget.s_lat,
@@ -189,7 +189,7 @@ class _AddressChoosePartState extends State<AddressChoosePart> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MapPage(
+                        builder: (context) => MapPageDGis(
                           controller: toController,
                           callback: changeTo,
                           lat: widget.d_lat,

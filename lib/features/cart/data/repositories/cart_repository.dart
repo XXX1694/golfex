@@ -19,9 +19,6 @@ class CartRepository {
     if (uri != null) {
       try {
         final response = await dio.get(finalUrl);
-        if (kDebugMode) {
-          print(response.data);
-        }
         if (response.statusCode == 200) {
           List data = response.data;
           List<OrderModel> orders = [];

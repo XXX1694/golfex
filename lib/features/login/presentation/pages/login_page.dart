@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goflex/common/colors.dart';
 import 'package:goflex/common/widgets/main_button.dart';
+import 'package:goflex/features/forgot_password/presentation/pages/forgot_password_page.dart';
 import 'package:goflex/features/login/presentation/bloc/login_bloc.dart';
 import 'package:goflex/features/login/presentation/widgets/login_bottom_text.dart';
 import 'package:goflex/features/login/presentation/widgets/login_main_text.dart';
@@ -84,6 +87,30 @@ class _LoginPageState extends State<LoginPage> {
                 PhoneField(controller: _phoneController),
                 const SizedBox(height: 20),
                 PasswordField(controller: _passwordController),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CupertinoButton(
+                      padding: const EdgeInsets.all(0),
+                      child: Text(
+                        'Забыли пароль? ',
+                        style: TextStyle(
+                          color: mainColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ForgotPasswordPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
                 const Spacer(),
                 state is LogingIn
                     ? const MainButtonLoading()

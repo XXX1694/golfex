@@ -1,6 +1,10 @@
 PODS:
   - app_tracking_transparency (0.0.1):
     - Flutter
+  - dgis_map_kit (0.0.1):
+    - DGisMobileSDK (= 2.8.0-map)
+    - Flutter
+  - DGisMobileSDK (2.8.0-map)
   - Flutter (1.0.0)
   - flutter_image_compress_common (1.0.0):
     - Flutter
@@ -12,10 +16,10 @@ PODS:
   - google_maps_flutter_ios (0.0.1):
     - Flutter
     - GoogleMaps (< 9.0)
-  - GoogleMaps (5.2.0):
-    - GoogleMaps/Maps (= 5.2.0)
-  - GoogleMaps/Base (5.2.0)
-  - GoogleMaps/Maps (5.2.0):
+  - GoogleMaps (7.4.0):
+    - GoogleMaps/Maps (= 7.4.0)
+  - GoogleMaps/Base (7.4.0)
+  - GoogleMaps/Maps (7.4.0):
     - GoogleMaps/Base
   - image_cropper (0.0.4):
     - Flutter
@@ -42,10 +46,10 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - SDWebImage (5.18.5):
-    - SDWebImage/Core (= 5.18.5)
-  - SDWebImage/Core (5.18.5)
-  - SDWebImageWebPCoder (0.14.2):
+  - SDWebImage (5.18.10):
+    - SDWebImage/Core (= 5.18.10)
+  - SDWebImage/Core (5.18.10)
+  - SDWebImageWebPCoder (0.14.3):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.17)
   - shared_preferences_foundation (0.0.1):
@@ -57,6 +61,7 @@ PODS:
 
 DEPENDENCIES:
   - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
+  - dgis_map_kit (from `.symlinks/plugins/dgis_map_kit/ios`)
   - Flutter (from `Flutter`)
   - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
@@ -70,6 +75,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - DGisMobileSDK
     - GoogleMaps
     - libwebp
     - Mantle
@@ -80,6 +86,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   app_tracking_transparency:
     :path: ".symlinks/plugins/app_tracking_transparency/ios"
+  dgis_map_kit:
+    :path: ".symlinks/plugins/dgis_map_kit/ios"
   Flutter:
     :path: Flutter
   flutter_image_compress_common:
@@ -103,23 +111,25 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_tracking_transparency: 5b1745ef9ade815f7455cb6a0848349589afb7c5
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  dgis_map_kit: c5ada0de00c2c9df4be37a826d6b1fcffcf641b7
+  DGisMobileSDK: a5956ca1a3c2ce0ea558a960395e2129c64d5aab
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_image_compress_common: ec1d45c362c9d30a3f6a0426c297f47c52007e3e
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
-  google_maps_flutter_ios: 590249c67f34f422122c232f2a626192adbc78ee
-  GoogleMaps: 025272d5876d3b32604e5c080dc25eaf68764693
+  google_maps_flutter_ios: d1318b4ff711612cab16862d7a87e31a7403d458
+  GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
   image_cropper: a3291c624a953049bc6a02e1f8c8ceb162a24b25
-  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
+  image_picker_ios: 99dfe1854b4fa34d0364e74a78448a0151025425
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   location: d5cf8598915965547c3f36761ae9cc4f4e87d22e
   Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
-  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
-  SDWebImage: 7ac2b7ddc5e8484c79aa90fc4e30b149d6a2c88f
-  SDWebImageWebPCoder: 633b813fca24f1de5e076bcd7f720c038b23892b
-  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
+  path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
+  SDWebImage: fc8f2d48bbfd72ef39d70e981bd24a3f3be53fec
+  SDWebImageWebPCoder: d25b638fc2c98782072f159165f22232f225b9d7
+  shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
-  url_launcher_ios: bf5ce03e0e2088bad9cc378ea97fa0ed5b49673b
+  url_launcher_ios: bbd758c6e7f9fd7b5b1d4cde34d2b95fcce5e812
 
-PODFILE CHECKSUM: 1891a3df61cbbc60776990444dd18464691cb926
+PODFILE CHECKSUM: 0e1b5d73c7e18d7865ccff8c6976c82a8da4fb0d
 
 COCOAPODS: 1.14.3
