@@ -34,7 +34,7 @@ class WorkWithMarketplaceButton extends StatelessWidget {
                 children: [
                   const Spacer(),
                   const Text(
-                    'Для онлайн-продавцов',
+                    'Условия для онлайн-продавцов',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
@@ -80,7 +80,7 @@ class WorkWithMarketplaceButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        // Navigator.pushNamed(context, '/article');
+        Navigator.pushNamed(context, '/article');
       },
     );
   }

@@ -10,6 +10,7 @@ class RegistrationRepository {
     required String fullName,
     required String email,
     required String password,
+    required bool isClient,
   }) async {
     final dio = Dio();
     final url = mainUrl;
@@ -26,6 +27,7 @@ class RegistrationRepository {
                 'full_name': fullName,
                 'email': email,
                 'password': password,
+                'person_type': isClient ? 'client' : 'online_shop',
               },
             ),
           );
@@ -38,6 +40,7 @@ class RegistrationRepository {
               'full_name': fullName,
               'password': password,
               'email': email,
+              'person_type': isClient ? 'client' : 'online_shop',
             },
           ),
         );

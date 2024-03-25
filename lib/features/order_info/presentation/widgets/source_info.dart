@@ -16,7 +16,7 @@ class SourceInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Информация об источнике',
           style: TextStyle(
             color: mainColor,

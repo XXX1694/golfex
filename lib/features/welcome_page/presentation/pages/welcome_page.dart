@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:goflex/common/colors.dart';
 import 'package:goflex/common/widgets/main_button.dart';
-import 'package:goflex/features/login/presentation/pages/login_page.dart';
-
+import 'package:goflex/features/login/presentation/pages/login_page_new.dart';
 import 'package:goflex/features/welcome_page/presentation/widgets/main_text_first.dart';
 import 'package:goflex/features/welcome_page/presentation/widgets/main_text_second.dart';
 import 'package:goflex/features/welcome_page/presentation/widgets/main_text_third.dart';
@@ -45,7 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
       await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const LoginPage(),
+          builder: (context) => const LoginPageNew(),
         ),
       );
     }
@@ -83,7 +82,7 @@ class _WelcomePageState extends State<WelcomePage> {
             : null,
         actions: [
           CupertinoButton(
-            child: Text(
+            child: const Text(
               'Пропустить',
               style: TextStyle(
                 color: mainColor,

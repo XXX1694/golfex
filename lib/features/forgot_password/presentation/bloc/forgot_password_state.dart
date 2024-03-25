@@ -14,3 +14,9 @@ class CodeSending extends ForgotPasswordState {}
 class CodeSended extends ForgotPasswordState {}
 
 class CodeSendError extends ForgotPasswordState {}
+
+class ResetingPassword extends ForgotPasswordState {}
+
+class ResetedPassword extends ForgotPasswordState {}
+
+class ResetPasswordError extends ForgotPasswordState {}

@@ -131,7 +131,7 @@ class _MapPageState extends State<MapPage> {
                                 Expanded(
                                   child: TextField(
                                     controller: widget.controller,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'Введите адрес',
                                       floatingLabelStyle:
                                           TextStyle(color: mainColor),
@@ -139,7 +139,7 @@ class _MapPageState extends State<MapPage> {
                                       iconColor: Colors.white,
                                       focusColor: Colors.white,
                                       hoverColor: Colors.white,
-                                      hintStyle: const TextStyle(
+                                      hintStyle: TextStyle(
                                         color: Colors.black54,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,

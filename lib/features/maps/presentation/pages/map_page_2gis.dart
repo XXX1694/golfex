@@ -96,7 +96,7 @@ class _MapPageDGisState extends State<MapPageDGis> {
                   icon: "assets/map_cluster_pin.png",
                   iconOptions: MapIconOptions(
                     text: markers.length.toString(),
-                    textStyle: MapIconTextStyle(
+                    textStyle: const MapIconTextStyle(
                       fontSize: 13.0,
                       color: mainColor,
                       strokeColor: mainColor,
@@ -172,7 +172,7 @@ class _MapPageDGisState extends State<MapPageDGis> {
                                 Expanded(
                                   child: TextField(
                                     controller: widget.controller,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'Введите адрес',
                                       floatingLabelStyle:
                                           TextStyle(color: mainColor),
@@ -180,7 +180,7 @@ class _MapPageDGisState extends State<MapPageDGis> {
                                       iconColor: Colors.white,
                                       focusColor: Colors.white,
                                       hoverColor: Colors.white,
-                                      hintStyle: const TextStyle(
+                                      hintStyle: TextStyle(
                                         color: Colors.black54,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -315,7 +315,7 @@ class _MapPageDGisState extends State<MapPageDGis> {
             long: res['long'],
           ),
           icon: "assets/map_pin.png",
-          iconOptions: MapIconOptions(
+          iconOptions: const MapIconOptions(
             text: '',
             textStyle: MapIconTextStyle(
               fontSize: 13.0,

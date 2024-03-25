@@ -1,7 +1,7 @@
 name: goflex
 description: A new Flutter project.
 publish_to: 'none'
-version: 1.0.4+24
+version: 3.0.4+34
 
 environment:
   sdk: '>=3.1.1 <4.0.0'
@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.6
   dgis_map_kit: ^0.0.6
   dgis_map_platform_interface: ^0.0.2
+  flutter_animate: ^4.5.0
 
 flutter_native_splash:
   android: true

@@ -22,7 +22,7 @@ class ParcelInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Информация о посылке',
           style: TextStyle(
             color: mainColor,

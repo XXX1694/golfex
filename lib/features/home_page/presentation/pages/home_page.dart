@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goflex/features/home_page/presentation/widgets/calculator_button.dart';
 import 'package:goflex/features/home_page/presentation/widgets/create_order_button.dart';
+import 'package:goflex/features/home_page/presentation/widgets/for_clients.dart';
 import 'package:goflex/features/home_page/presentation/widgets/left_application_button.dart';
 import 'package:goflex/features/home_page/presentation/widgets/home_page_main_text.dart';
 import 'package:goflex/features/home_page/presentation/widgets/home_page_second_text.dart';
@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
                               SizedBox(height: 30),
                               Expanded(
                                 flex: 6,
-                                child: CalculatorButton(),
+                                child: ForClientsButton(),
                               ),
                               SizedBox(height: 20),
                               Expanded(

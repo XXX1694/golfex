@@ -15,7 +15,7 @@ class ProfileTop extends StatelessWidget {
             color: accentColor20,
             borderRadius: BorderRadius.circular(500),
           ),
-          child: Center(
+          child: const Center(
             child: Text(
               'AS',
               style: TextStyle(

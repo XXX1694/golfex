@@ -27,5 +27,24 @@ class ForgotPasswordBloc
         }
       },
     );
+    on<CreatePassword>(
+      (event, emit) async {
+        try {
+          emit(ResetingPassword());
+          final res = await repo.createPassword(
+            email: event.email,
+            code: event.code,
+            password: event.password,
+          );
+          if (res == 201) {
+            emit(ResetedPassword());
+          } else {
+            emit(ResetPasswordError());
+          }
+        } catch (e) {
+          emit(ResetPasswordError());
+        }
+      },
+    );
   }
 }

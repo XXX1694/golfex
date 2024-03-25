@@ -41,9 +41,18 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            height: 1,
+            width: double.infinity,
+            color: Colors.black12,
+          ),
+        ),
         centerTitle: true,
         title: RichText(
-          text: TextSpan(
+          text: const TextSpan(
             children: [
               TextSpan(
                 text: 'go',
@@ -68,142 +77,135 @@ class _ChatPageState extends State<ChatPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              Expanded(
-                child: BlocConsumer<GetUserIdBloc, GetUserIdState>(
-                  listener: (context, state1) {
-                    if (state1 is GotUserId) {
-                      bloc.add(GetAllChats());
-                    }
-                  },
-                  builder: (context, state1) {
-                    if (state1 is GotUserId) {
-                      return BlocConsumer<ChatPageBloc, ChatPageState>(
-                        listener: (context, state) {},
-                        builder: (context, state) {
-                          if (state is ChatListGot) {
-                            return SmartRefresher(
-                              enablePullDown: true,
-                              enablePullUp: false,
-                              controller: _refreshController,
-                              onRefresh: () async {
-                                await Future.delayed(
-                                    const Duration(milliseconds: 500));
-                                bloc1.add(GetuserId());
-                                bloc.add(GetAllChats());
-                              },
-                              child: ListView.builder(
-                                itemCount: state.chats.length,
-                                itemBuilder: (context, index) =>
-                                    CupertinoButton(
-                                  padding: const EdgeInsets.only(bottom: 20),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChangeNotifierProvider(
-                                          create: (context) => HomeProvider(),
-                                          child: MessagePage(
-                                            chatId: state.chats[index].id,
-                                            userId: state1.userId,
-                                            name: state.chats[index]
-                                                .participants[0]['name'],
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: SizedBox(
+          child: BlocConsumer<GetUserIdBloc, GetUserIdState>(
+            listener: (context, state1) {
+              if (state1 is GotUserId) {
+                bloc.add(GetAllChats());
+              }
+            },
+            builder: (context, state1) {
+              if (state1 is GotUserId) {
+                return BlocConsumer<ChatPageBloc, ChatPageState>(
+                  listener: (context, state) {},
+                  builder: (context, state) {
+                    if (state is ChatListGot) {
+                      return SmartRefresher(
+                        enablePullDown: true,
+                        enablePullUp: false,
+                        controller: _refreshController,
+                        onRefresh: () async {
+                          await Future.delayed(
+                              const Duration(milliseconds: 500));
+                          bloc1.add(GetuserId());
+                          bloc.add(GetAllChats());
+                        },
+                        child: ListView.builder(
+                          itemCount: state.chats.length,
+                          itemBuilder: (context, index) => CupertinoButton(
+                            padding: EdgeInsets.only(
+                              bottom: 20,
+                              top: index == 0 ? 20 : 0,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChangeNotifierProvider(
+                                    create: (context) => HomeProvider(),
+                                    child: MessagePage(
+                                      chatId: state.chats[index].id,
+                                      userId: state1.userId,
+                                      name: state.chats[index].participants[0]
+                                          ['name'],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            child: SizedBox(
+                              height: 50,
+                              width: double.infinity,
+                              child: Row(
+                                children: [
+                                  Container(
                                     height: 50,
-                                    width: double.infinity,
-                                    child: Row(
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Container(
-                                          height: 50,
-                                          width: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.grey.shade300,
-                                            borderRadius:
-                                                BorderRadius.circular(100),
+                                        Text(
+                                          state
+                                              .chats[index]
+                                              .delivery['order']
+                                                  ['tracking_number']
+                                              .toString(),
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14,
                                           ),
                                         ),
-                                        const SizedBox(width: 8),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                state
-                                                    .chats[index]
-                                                    .delivery['order']
-                                                        ['tracking_number']
-                                                    .toString(),
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                              const SizedBox(height: 4),
-                                              Text(
-                                                state.chats[index]
-                                                    .participants[0]['name']
-                                                    .toString(),
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 16,
-                                                ),
-                                              ),
-                                            ],
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          state.chats[index]
+                                              .participants[0]['name']
+                                              .toString(),
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16,
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            );
-                          } else if (state is ChatListGetting) {
-                            return Center(
-                              child: Platform.isAndroid
-                                  ? CircularProgressIndicator(
-                                      color: mainColor,
-                                      strokeWidth: 3,
-                                    )
-                                  : CupertinoActivityIndicator(
-                                      color: mainColor,
-                                    ),
-                            );
-                          } else {
-                            return const Center(
-                              child: Text('Пусто'),
-                            );
-                          }
-                        },
+                            ),
+                          ),
+                        ),
                       );
-                    } else {
+                    } else if (state is ChatListGetting) {
                       return Center(
                         child: Platform.isAndroid
-                            ? CircularProgressIndicator(
+                            ? const CircularProgressIndicator(
                                 color: mainColor,
                                 strokeWidth: 3,
                               )
-                            : CupertinoActivityIndicator(
+                            : const CupertinoActivityIndicator(
                                 color: mainColor,
                               ),
                       );
+                    } else {
+                      return const Center(
+                        child: Text('Пусто'),
+                      );
                     }
                   },
-                ),
-              ),
-            ],
+                );
+              } else {
+                return Center(
+                  child: Platform.isAndroid
+                      ? const CircularProgressIndicator(
+                          color: mainColor,
+                          strokeWidth: 3,
+                        )
+                      : const CupertinoActivityIndicator(
+                          color: mainColor,
+                        ),
+                );
+              }
+            },
           ),
         ),
       ),

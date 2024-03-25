@@ -33,7 +33,7 @@ class _ParcelHeightState extends State<ParcelHeight> {
       controller: widget.controller,
       decoration: InputDecoration(
         labelText: 'Высота',
-        floatingLabelStyle: TextStyle(color: mainColor),
+        floatingLabelStyle: const TextStyle(color: mainColor),
         labelStyle: const TextStyle(
           color: Colors.black54,
           fontSize: 14,
@@ -41,7 +41,7 @@ class _ParcelHeightState extends State<ParcelHeight> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: mainColor),
+          borderSide: const BorderSide(color: mainColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

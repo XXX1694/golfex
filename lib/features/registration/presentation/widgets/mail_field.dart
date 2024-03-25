@@ -14,11 +14,11 @@ class EmailField extends StatelessWidget {
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
-        floatingLabelStyle: TextStyle(color: mainColor),
+        floatingLabelStyle: const TextStyle(color: mainColor),
         labelText: 'Email',
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: mainColor),
+          borderSide: const BorderSide(color: mainColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

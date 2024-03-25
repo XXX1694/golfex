@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:goflex/common/colors.dart';
-import 'package:goflex/features/new_order/presentation/pages/contact_info_page.dart';
+import 'package:goflex/features/home_page_new/presentation/pages/home_page_new.dart';
 import 'package:goflex/features/order_info/presentation/pages/order_info_page.dart';
 import 'package:goflex/features/orders/presentation/bloc/orders_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -72,12 +72,12 @@ class _OrdersPageState extends State<OrdersPage> {
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ContactInfoPage(),
-                    ),
-                  );
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePageNew(),
+                      ),
+                      (route) => false);
                 },
                 child: SvgPicture.asset(
                   'assets/icons/add.svg',
@@ -93,11 +93,11 @@ class _OrdersPageState extends State<OrdersPage> {
         body: SmartRefresher(
           header: CustomHeader(
             builder: (context, mode) => Platform.isAndroid
-                ? CircularProgressIndicator(
+                ? const CircularProgressIndicator(
                     color: mainColor,
                     strokeWidth: 3,
                   )
-                : CupertinoActivityIndicator(
+                : const CupertinoActivityIndicator(
                     color: mainColor,
                   ),
           ),
@@ -141,7 +141,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                 children: [
                                   Text(
                                     state.orders[index].status ?? '',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: mainColor,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
@@ -262,11 +262,11 @@ class _OrdersPageState extends State<OrdersPage> {
                   : state is GettingOrders
                       ? Center(
                           child: Platform.isAndroid
-                              ? CircularProgressIndicator(
+                              ? const CircularProgressIndicator(
                                   color: mainColor,
                                   strokeWidth: 3,
                                 )
-                              : CupertinoActivityIndicator(
+                              : const CupertinoActivityIndicator(
                                   color: mainColor,
                                 ),
                         )

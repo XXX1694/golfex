@@ -48,12 +48,20 @@ class AddToCartRepository {
                   "length_cm": int.parse(order.product?['length_cm'] ?? 0),
                   // "images": order.products?['images'] ?? []
                 },
+                "price": order.seller_rate == 1
+                    ? ((order.distance ?? 0) <= 12
+                        ? 2500
+                        : 2500 + ((order.distance ?? 0) - 12) * 100)
+                    : ((order.distance ?? 0) <= 12
+                        ? 1000
+                        : 1000 + ((order.distance ?? 0) - 12) * 80),
                 "consumer": order.consumer,
                 "delivery_date": order.delivery_date,
                 "delivery_time": order.delivery_time,
                 "pickup_date": order.pickup_date,
                 "pickup_time": order.pickup_time,
                 "distance": order.distance,
+                "seller_rate": order.seller_rate ?? 1
               },
             ),
           );
@@ -82,13 +90,20 @@ class AddToCartRepository {
                 "length_cm": int.parse(order.product?['length_cm'] ?? 0),
                 // "images": order.products?['images'] ?? []
               },
-              "price": order.price,
+              "price": order.seller_rate == 1
+                  ? ((order.distance ?? 0) <= 12
+                      ? 2500
+                      : 2500 + ((order.distance ?? 0) - 12) * 100)
+                  : ((order.distance ?? 0) <= 12
+                      ? 1000
+                      : 1000 + ((order.distance ?? 0) - 12) * 80),
               "consumer": order.consumer,
               "delivery_date": order.delivery_date,
               "delivery_time": order.delivery_time,
               "pickup_date": order.pickup_date,
               "pickup_time": order.pickup_time,
               "distance": order.distance,
+              "seller_rate": order.seller_rate ?? 1
             },
           ),
         );

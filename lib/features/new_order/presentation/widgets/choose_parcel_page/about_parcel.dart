@@ -11,7 +11,7 @@ class AboutParcel extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Подробнее',
         alignLabelWithHint: true,
-        floatingLabelStyle: TextStyle(color: mainColor),
+        floatingLabelStyle: const TextStyle(color: mainColor),
         // ignore: prefer_const_constructors
         labelStyle: TextStyle(
           color: Colors.black54,
@@ -20,7 +20,7 @@ class AboutParcel extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: mainColor),
+          borderSide: const BorderSide(color: mainColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

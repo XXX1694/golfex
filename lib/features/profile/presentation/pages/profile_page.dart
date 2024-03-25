@@ -50,6 +50,15 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(1),
+            child: Container(
+              height: 1,
+              width: double.infinity,
+              color: Colors.black12,
+            ),
+          ),
           elevation: 0,
           centerTitle: false,
           actions: [
@@ -68,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
             )
           ],
           title: RichText(
-            text: TextSpan(
+            text: const TextSpan(
               children: [
                 TextSpan(
                   text: 'go',
@@ -93,11 +102,11 @@ class _ProfilePageState extends State<ProfilePage> {
         body: state is GettingProfile
             ? Center(
                 child: Platform.isAndroid
-                    ? CircularProgressIndicator(
+                    ? const CircularProgressIndicator(
                         color: mainColor,
                         strokeWidth: 3,
                       )
-                    : CupertinoActivityIndicator(
+                    : const CupertinoActivityIndicator(
                         color: mainColor,
                       ),
               )
@@ -108,11 +117,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: SmartRefresher(
                         header: CustomHeader(
                           builder: (context, mode) => Platform.isAndroid
-                              ? CircularProgressIndicator(
+                              ? const CircularProgressIndicator(
                                   color: mainColor,
                                   strokeWidth: 3,
                                 )
-                              : CupertinoActivityIndicator(
+                              : const CupertinoActivityIndicator(
                                   color: mainColor,
                                 ),
                         ),

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goflex/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:goflex/common/colors.dart';
-import 'package:goflex/features/new_order/presentation/pages/contact_info_page.dart';
 import 'package:goflex/features/order_info/presentation/pages/order_info_page.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -76,6 +75,13 @@ class _CartPageState extends State<CartPage> {
       },
       builder: (context, state) => Scaffold(
         appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           title: const Text(
             'Корзина',
             style: TextStyle(
@@ -107,11 +113,11 @@ class _CartPageState extends State<CartPage> {
                       child: SmartRefresher(
                         header: CustomHeader(
                           builder: (context, mode) => Platform.isAndroid
-                              ? CircularProgressIndicator(
+                              ? const CircularProgressIndicator(
                                   color: mainColor,
                                   strokeWidth: 3,
                                 )
-                              : CupertinoActivityIndicator(
+                              : const CupertinoActivityIndicator(
                                   color: mainColor,
                                 ),
                         ),
@@ -155,7 +161,7 @@ class _CartPageState extends State<CartPage> {
                                         children: [
                                           Text(
                                             state.orders[index].status ?? '',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: mainColor,
                                               fontSize: 16,
                                               fontWeight: FontWeight.w700,
@@ -246,20 +252,20 @@ class _CartPageState extends State<CartPage> {
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
+                                                // TextSpan(
+                                                //   text:
+                                                //       '${state.orders.length <= 2 ? state.orders[index].price : ''}',
+                                                //   style: const TextStyle(
+                                                //     decoration: TextDecoration
+                                                //         .lineThrough,
+                                                //     color: mainColor,
+                                                //     fontSize: 16,
+                                                //     fontWeight: FontWeight.w600,
+                                                //   ),
+                                                // ),
                                                 TextSpan(
                                                   text:
-                                                      '${state.orders.length <= 2 ? 1000 : ''}',
-                                                  style: TextStyle(
-                                                    decoration: TextDecoration
-                                                        .lineThrough,
-                                                    color: mainColor,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text:
-                                                      ' ${state.orders.length <= 2 ? (state.orders.length == 1 ? 1500 : 1250) : '1000'}',
+                                                      ' ${state.orders.length <= 2 ? (state.orders.length == 1 ? state.orders[index].price : state.orders[index].price) : state.orders[index].price}',
                                                   style: const TextStyle(
                                                     color: Colors.black54,
                                                     fontSize: 16,
@@ -278,11 +284,11 @@ class _CartPageState extends State<CartPage> {
                             : state is CartGetting
                                 ? Center(
                                     child: Platform.isAndroid
-                                        ? CircularProgressIndicator(
+                                        ? const CircularProgressIndicator(
                                             color: mainColor,
                                             strokeWidth: 3,
                                           )
-                                        : CupertinoActivityIndicator(
+                                        : const CupertinoActivityIndicator(
                                             color: mainColor,
                                           ),
                                   )
@@ -327,7 +333,7 @@ class _CartPageState extends State<CartPage> {
                             const Spacer(),
                             Text(
                               state is CartGot ? 'Забор: ' : '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: mainColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
@@ -335,7 +341,7 @@ class _CartPageState extends State<CartPage> {
                             ),
                             Text(
                               '${state is CartGot ? state.orders.length <= 2 ? 500 : 'Бесплатно' : ''}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: mainColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -350,10 +356,25 @@ class _CartPageState extends State<CartPage> {
                     padding: const EdgeInsets.all(0),
                     onPressed: () {
                       if (state is CartGetError) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ContactInfoPage(),
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const ContactInfoPage(),
+                        //   ),
+                        // );
+                        showDialog(
+                          context: context,
+                          builder: (context) => CupertinoAlertDialog(
+                            title: const Text('Ошибка'),
+                            content: const Text('Корзина пуста'),
+                            actions: [
+                              CupertinoDialogAction(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('OK'),
+                              )
+                            ],
                           ),
                         );
                       } else {
@@ -364,12 +385,10 @@ class _CartPageState extends State<CartPage> {
                       height: 50,
                       width: double.infinity,
                       color: mainColor,
-                      child: Center(
+                      child: const Center(
                         child: Text(
-                          state is CartGetError
-                              ? 'Добавить заказ'
-                              : 'Отправить все',
-                          style: const TextStyle(
+                          'Отправить все',
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

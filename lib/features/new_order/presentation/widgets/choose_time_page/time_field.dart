@@ -38,7 +38,7 @@ class _TimeFieldState extends State<TimeField> {
         color: Colors.black87,
         fontSize: 14,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Выберите время',
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(

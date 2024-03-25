@@ -205,6 +205,7 @@ class _ParcelInfoPageState extends State<ParcelInfoPage> {
                                   pickup_date: widget.pickup_date,
                                   pickup_time: widget.pickup_time,
                                   distance: dist / 1000,
+                                  seller_rate: 1,
                                 ),
                               ),
                             );

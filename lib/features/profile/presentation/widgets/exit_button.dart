@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goflex/features/login/presentation/bloc/login_bloc.dart';
-import 'package:goflex/features/login/presentation/pages/login_page.dart';
+import 'package:goflex/features/login/presentation/pages/login_page_new.dart';
 
 class ExitButton extends StatefulWidget {
   const ExitButton({super.key});
@@ -26,7 +26,7 @@ class _ExitButtonState extends State<ExitButton> {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => const LoginPage(),
+              builder: (context) => const LoginPageNew(),
             ),
             (route) => false);
       },

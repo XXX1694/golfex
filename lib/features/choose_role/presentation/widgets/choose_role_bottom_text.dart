@@ -21,7 +21,7 @@ class ChooseRoleBottomText extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(context, '/login');
           },
-          child: Text(
+          child: const Text(
             'Войти',
             style: TextStyle(
               color: mainColor,

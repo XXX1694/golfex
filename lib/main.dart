@@ -18,13 +18,13 @@ import 'package:goflex/features/forgot_password/presentation/bloc/forgot_passwor
 import 'package:goflex/features/get_user_id/data/repositories/get_user_id_repo.dart';
 import 'package:goflex/features/get_user_id/presentation/bloc/get_user_id_bloc.dart';
 import 'package:goflex/features/help/presentation/pages/help_page.dart';
+import 'package:goflex/features/home_page_new/presentation/pages/home_page_new.dart';
 import 'package:goflex/features/left_application/data/repositories/left_application_repository.dart';
 import 'package:goflex/features/left_application/presentation/bloc/left_application_bloc.dart';
 import 'package:goflex/features/login/data/repository/login_repository.dart';
 import 'package:goflex/features/login/presentation/bloc/login_bloc.dart';
-import 'package:goflex/features/login/presentation/pages/login_page.dart';
+import 'package:goflex/features/login/presentation/pages/login_page_new.dart';
 import 'package:goflex/features/main_article/presentation/pages/main_article_page.dart';
-import 'package:goflex/features/main_page/presentation/pages/main_pagge.dart';
 import 'package:goflex/features/message/data/repositories/message_repository.dart';
 import 'package:goflex/features/message/presentation/bloc/message_bloc.dart';
 import 'package:goflex/features/new_order/data/repository/add_repository.dart';
@@ -39,7 +39,7 @@ import 'package:goflex/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:goflex/features/registration/data/repository/registration_repository.dart';
 import 'package:goflex/features/registration/presentation/bloc/registration_bloc.dart';
 import 'package:goflex/features/registration/presentation/pages/organization_registration_page.dart';
-import 'package:goflex/features/registration/presentation/pages/person_registration_page.dart';
+import 'package:goflex/features/registration/presentation/pages/select_register.dart';
 import 'package:goflex/features/settings/presentation/pages/settings_page.dart';
 import 'package:goflex/features/welcome_page/presentation/pages/welcome_page.dart';
 import 'package:goflex/utils/permission_utils.dart';
@@ -183,13 +183,12 @@ class _MainAppState extends State<MainApp> {
           debugShowCheckedModeBanner: false,
           routes: {
             '/welcome': (context) => const WelcomePage(),
-            '/login': (context) => const LoginPage(),
+            '/login': (context) => const LoginPageNew(),
             '/choose_role': (context) => const ChooseRole(),
-            '/registration/person': (context) =>
-                const PersonrRegistrationPage(),
+            '/registration/person': (context) => const SelectRegister(),
             '/registration/organization': (context) =>
                 const OrganizationRegistrationPage(),
-            '/main': (context) => const MainPage(page: 0),
+            '/main': (context) => const HomePageNew(),
             '/settings': (context) => const SettingsPage(),
             '/about': (context) => const AboutPage(),
             '/help': (context) => const HelpPage(),

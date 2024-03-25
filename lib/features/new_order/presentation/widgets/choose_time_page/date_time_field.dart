@@ -53,7 +53,7 @@ class _BirthDateFieldState extends State<BirthDateField> {
         color: Colors.black87,
         fontSize: 14,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Выберите дату',
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(

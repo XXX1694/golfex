@@ -7,27 +7,29 @@ class PhoneField extends StatelessWidget {
   final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: 'Номер телефона',
-        floatingLabelStyle: TextStyle(color: mainColor),
-        labelStyle: const TextStyle(
-          color: Colors.black54,
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
+    return SizedBox(
+      height: 62,
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: '+7 (XXX) XXX XX XX',
+          hintStyle: const TextStyle(
+            color: Colors.black54,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(color: mainColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(color: Colors.black26),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: mainColor),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Colors.black26),
-        ),
+        keyboardType: TextInputType.phone,
+        inputFormatters: [maskFormatter],
       ),
-      keyboardType: TextInputType.phone,
-      inputFormatters: [maskFormatter],
     );
   }
 }

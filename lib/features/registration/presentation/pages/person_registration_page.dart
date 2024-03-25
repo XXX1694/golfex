@@ -9,8 +9,11 @@ import 'package:goflex/features/registration/presentation/widgets/registration_m
 import 'package:goflex/features/registration/presentation/widgets/registration_second_text.dart';
 
 class PersonrRegistrationPage extends StatefulWidget {
-  const PersonrRegistrationPage({super.key});
-
+  const PersonrRegistrationPage({
+    super.key,
+    required this.isClient,
+  });
+  final bool isClient;
   @override
   State<PersonrRegistrationPage> createState() =>
       _PersonrRegistrationPageState();
@@ -97,6 +100,7 @@ class _PersonrRegistrationPageState extends State<PersonrRegistrationPage> {
                                       password: _passwordController.text,
                                       phone: _phoneNumberController.text,
                                       email: _emailController.text,
+                                      isClient: widget.isClient,
                                     ),
                                   );
                                 },

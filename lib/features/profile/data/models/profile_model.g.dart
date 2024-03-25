@@ -9,10 +9,12 @@ part of 'profile_model.dart';
 ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) => ProfileModel(
       name: json['name'] as String,
       phone: json['phone'] as String,
+      person_type: json['person_type'] as String,
     );
 
 Map<String, dynamic> _$ProfileModelToJson(ProfileModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'phone': instance.phone,
+      'person_type': instance.person_type,
     };

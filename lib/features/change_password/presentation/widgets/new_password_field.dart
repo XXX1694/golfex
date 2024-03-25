@@ -18,7 +18,7 @@ class _NewPasswordFieldState extends State<NewPasswordField> {
       obscureText: _obscureText,
       // obscuringCharacter: '*',
       decoration: InputDecoration(
-        floatingLabelStyle: TextStyle(color: mainColor),
+        floatingLabelStyle: const TextStyle(color: mainColor),
         suffixIcon: GestureDetector(
           onTap: () => setState(() {
             _obscureText = !_obscureText;
@@ -36,7 +36,7 @@ class _NewPasswordFieldState extends State<NewPasswordField> {
         labelText: 'Новый пароль',
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: mainColor),
+          borderSide: const BorderSide(color: mainColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

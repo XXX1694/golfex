@@ -21,7 +21,7 @@ class LoginBottomText extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(context, '/registration/person');
           },
-          child: Text(
+          child: const Text(
             'Регистрация',
             style: TextStyle(
               color: mainColor,

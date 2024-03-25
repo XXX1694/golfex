@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goflex/features/login/presentation/bloc/login_bloc.dart';
-import 'package:goflex/features/login/presentation/pages/login_page.dart';
+import 'package:goflex/features/login/presentation/pages/login_page_new.dart';
 
 class DeleteButton extends StatefulWidget {
   const DeleteButton({super.key});
@@ -26,7 +26,7 @@ class _DeleteButtonState extends State<DeleteButton> {
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                builder: (context) => const LoginPage(),
+                builder: (context) => const LoginPageNew(),
               ),
               (route) => false);
           ScaffoldMessenger.of(context).showSnackBar(
@@ -40,43 +40,20 @@ class _DeleteButtonState extends State<DeleteButton> {
         onTap: () {
           bloc.add(UserDelete());
         },
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(5, 5),
-                blurRadius: 15,
-                color: Colors.black12,
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20),
+            Text(
+              'Удалить аккаунт',
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
               ),
-            ],
-          ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 8),
-                Column(
-                  children: [
-                    SizedBox(height: 12),
-                    Text(
-                      'Удалить аккаунт',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(height: 12),
-                  ],
-                ),
-                SizedBox(height: 8),
-              ],
             ),
-          ),
+            SizedBox(height: 20),
+          ],
         ),
       ),
     );

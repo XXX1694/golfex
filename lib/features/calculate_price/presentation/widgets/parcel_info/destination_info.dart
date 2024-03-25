@@ -16,7 +16,7 @@ class DestinationInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Информация о пункте назначения:',
           style: TextStyle(
             color: mainColor,

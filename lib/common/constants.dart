@@ -1,3 +1,3 @@
 String mainUrl = 'https://back.goflex.kz/';
 
-String dgisApi = '64cca5be-30f8-4772-8d5c-d64bab285c67';
+String dgisApi = '2f6a54d7-25b5-4df0-8796-0e422cab77bd';

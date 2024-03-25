@@ -12,7 +12,7 @@ class CourierInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Информация о курьерской службе',
           style: TextStyle(
             color: mainColor,

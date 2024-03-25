@@ -20,7 +20,7 @@ class CoordinatesPart extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Координаты',
           style: TextStyle(
             color: mainColor,

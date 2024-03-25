@@ -14,7 +14,6 @@ class AgreementPage extends StatefulWidget {
   });
   final String phone;
   final String password;
-
   @override
   State<AgreementPage> createState() => _AgreementPageState();
 }
@@ -31,7 +30,7 @@ class _AgreementPageState extends State<AgreementPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
-        if (state is LogingIn) {
+        if (state is LogedIn) {
           Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
         }
       },
@@ -64,8 +63,9 @@ class _AgreementPageState extends State<AgreementPage> {
                         onPressed: () {
                           bloc.add(
                             LogIn(
-                                phoneNumber: widget.phone,
-                                password: widget.password),
+                              phoneNumber: widget.phone,
+                              password: widget.password,
+                            ),
                           );
                         },
                       ),

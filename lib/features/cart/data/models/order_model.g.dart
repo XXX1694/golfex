@@ -23,6 +23,7 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       pickup_time: json['pickup_time'] as String?,
       delivery_time: json['delivery_time'] as String?,
       distance: (json['distance'] as num?)?.toDouble(),
+      seller_rate: json['seller_rate'] as int?,
     );
 
 Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
@@ -43,4 +44,5 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'delivery_date': instance.delivery_date,
       'delivery_time': instance.delivery_time,
       'distance': instance.distance,
+      'seller_rate': instance.seller_rate,
     };

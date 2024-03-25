@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:goflex/common/constants.dart';
@@ -87,6 +89,53 @@ class MapRepository {
         return suggests;
       } else {
         return [];
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
+  calculateDistance({
+    required String fromLat,
+    required String fromLong,
+    required String toLat,
+    required String toLong,
+  }) async {
+    final dio = Dio();
+    String finalUrl =
+        'https://routing.api.2gis.com/carrouting/6.0.0/global?key=64cca5be-30f8-4772-8d5c-d64bab285c67';
+
+    try {
+      final response = await dio.post(
+        finalUrl,
+        data: jsonEncode(
+          {
+            "points": [
+              {
+                "type": "car",
+                "x": double.parse(fromLong),
+                "y": double.parse(fromLat),
+              },
+              {
+                "type": "car",
+                "x": double.parse(toLong),
+                "y": double.parse(toLat),
+              }
+            ]
+          },
+        ),
+      );
+      if (kDebugMode) {
+        print(response.statusCode);
+      }
+      if (response.statusCode == 200) {
+        final data = response.data;
+
+        return data['result'][0]['total_distance'];
+      } else {
+        return 0;
       }
     } catch (e) {
       if (kDebugMode) {

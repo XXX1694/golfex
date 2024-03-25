@@ -55,11 +55,11 @@ class _NotificationPageState extends State<NotificationPage> {
       body: SmartRefresher(
         header: CustomHeader(
           builder: (context, mode) => Platform.isAndroid
-              ? CircularProgressIndicator(
+              ? const CircularProgressIndicator(
                   color: mainColor,
                   strokeWidth: 3,
                 )
-              : CupertinoActivityIndicator(
+              : const CupertinoActivityIndicator(
                   color: mainColor,
                 ),
         ),

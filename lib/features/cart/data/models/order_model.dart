@@ -22,6 +22,7 @@ class OrderModel {
   final String? delivery_date;
   final String? delivery_time;
   final double? distance;
+  final int? seller_rate;
 
   OrderModel({
     required this.delivery_service,
@@ -40,6 +41,7 @@ class OrderModel {
     required this.pickup_time,
     required this.delivery_time,
     required this.distance,
+    required this.seller_rate,
   });
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
       _$OrderModelFromJson(json);

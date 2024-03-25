@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     CupertinoButton(
                       padding: const EdgeInsets.all(0),
-                      child: Text(
+                      child: const Text(
                         'Забыли пароль? ',
                         style: TextStyle(
                           color: mainColor,

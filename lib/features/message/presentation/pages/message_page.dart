@@ -177,11 +177,11 @@ class _MessagePageState extends State<MessagePage> {
                           } else if (state is MessageGetting) {
                             return Center(
                               child: Platform.isAndroid
-                                  ? CircularProgressIndicator(
+                                  ? const CircularProgressIndicator(
                                       color: mainColor,
                                       strokeWidth: 3,
                                     )
-                                  : CupertinoActivityIndicator(
+                                  : const CupertinoActivityIndicator(
                                       color: mainColor,
                                     ),
                             );

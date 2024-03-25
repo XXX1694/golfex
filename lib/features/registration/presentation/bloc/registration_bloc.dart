@@ -19,6 +19,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
           fullName: event.fullName,
           email: event.email,
           password: event.password,
+          isClient: event.isClient,
         );
         if (res == 201) {
           emit(UserRegistered());
