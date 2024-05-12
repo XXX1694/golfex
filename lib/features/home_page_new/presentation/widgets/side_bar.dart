@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +13,7 @@ import 'package:goflex/features/orders/presentation/pages/orders_page.dart';
 import 'package:goflex/features/profile/data/models/profile_model.dart';
 import 'package:goflex/features/profile/presentation/pages/profile_page_new.dart';
 import 'package:goflex/features/settings/presentation/pages/settings_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({
@@ -211,6 +215,40 @@ class _SideBarState extends State<SideBar> {
                   ),
                 ),
                 InkWell(
+                  onTap: () async {
+                    const String phoneNumber = 'tel:+77755205145';
+                    try {
+                      if (await canLaunch(phoneNumber)) {
+                        await launch(phoneNumber);
+                      } else {
+                        throw 'Could not launch $phoneNumber';
+                      }
+                    } catch (e) {
+                      if (kDebugMode) {
+                        print('Error: $e');
+                      }
+                    }
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 4),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: const Row(
+                      children: [
+                        Icon(Icons.call_outlined),
+                        SizedBox(width: 8),
+                        Text(
+                          'Call-центр',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
@@ -314,7 +352,6 @@ class _SideBarState extends State<SideBar> {
                         ),
                         SvgPicture.asset(
                           'assets/icons/exit_side.svg',
-                          // ignore: deprecated_member_use
                           color: Colors.red,
                         ),
                       ],

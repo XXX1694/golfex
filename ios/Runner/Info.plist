@@ -39,12 +39,16 @@
 	<string>Used to demonstrate image picker plugin</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Want to display location, on map and track it, to be give user function to select location of distribution and pick up location for delivery</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Want to display location, on map and track it, to be give user function to select location of distribution and pick up location for delivery</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Want to display location, on map and track it, to be give user function to select location of distribution and pick up location for delivery</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Used to capture audio for image picker plugin</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to demonstrate image picker plugin</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Мы используем ваше местоположение для предоставления персонализированных карт и услуг на основе местоположения. Это помогает нам улучшить ваш опыт, показывая актуальную информацию на основе вашего текущего местоположения.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -70,11 +74,5 @@
 	<false/>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>We use your location for providing personalized maps and location-based services. This helps us enhance your experience by showing relevant information based on your current location.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Want to display location, on map and track it, to be give user function to select location of distribution and pick up location for delivery</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Want to display location, on map and track it, to be give user function to select location of distribution and pick up location for delivery</string>
 </dict>
 </plist>
